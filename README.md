@@ -1,6 +1,6 @@
-# KatikaNaMe
-A guide for dancers to grow and build a career
-These are some content that I hope this guide provides to performming artists. Not just dancers. The aim is to help them grow in dance and, transferable skills, and help them stay consistent.
+# KatikaNaMe Project
+## A guide or tool for dancers to start, track and build a career.
+These are some content that I hope to develop to help performing artists especially dancers, grow in their dance and, transferable skills, and help them stay consistent. 
 
 - Introduction
   - Understanding Talent Management
