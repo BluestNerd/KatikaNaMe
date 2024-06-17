@@ -2,44 +2,42 @@
 ## A guide or tool for dancers to start, track and build a career.
 These are some content that I hope to develop to help performing artists especially dancers, grow in their dance and, transferable skills, and help them stay consistent. 
 
-|-- index.md
-|-- 01-introduction/
-|   |-- understanding-talent-management.md
-|   |-- setting-goals-and-milestones.md
-|   |-- time-management-and-discipline.md
-|   |-- building-confidence-and-self-esteem.md
-|-- 02-dance-training/
-|   |-- basics-of-dance.md
-|   |-- advanced-dance-techniques.md
-|   |-- choreography-and-creativity.md
-|   |-- understanding-music-and-rhythm.md
-|   |-- health-and-fitness.md
-|-- 03-independent-learning/
-|   |-- online-resources.md
-|   |-- personal-dance-style.md
-|   |-- creative-exercises.md
-|   |-- staying-inspired.md
-|-- 04-business-skills/
-|   |-- entrepreneurship.md
-|   |-- contracts-and-agreements.md
-|   |-- financial-management.md
-|   |-- marketing-and-branding.md
-|   |-- networking.md
-|-- 05-content-creation/
-|   |-- filming-and-editing.md
-|   |-- youtube-channel.md
-|   |-- social-media-engagement.md
-|   |-- collaborations.md
-|   |-- showcasing-performances.md
-|-- 06-monetizing-dance-skills/
-|   |-- teaching-classes.md
-|   |-- events-and-competitions.md
-|   |-- sponsorships-and-partnerships.md
-|   |-- selling-merchandise.md
-|   |-- crowdfunding-and-patreon.md
-|-- 07-social-media-calendar/
-|   |-- weekly-planning.md
-|   |-- daily-post-ideas.md
-|   |-- engagement-strategies.md
-|   |-- performance-metrics.md
-
+- Introduction
+  - Understanding Talent Management
+  - Setting Goals and Milestones
+  - Time Management and Discipline
+  - Building Confidence and Self-Esteem
+- Dance Training and Education
+  - Basics of Dance: Styles and Techniques
+  - Advanced Dance Techniques
+  - Choreography and Creativity
+  - Understanding Music and Rhythm
+  - Health and Fitness for Dancers
+- Independent Learning and Creativity
+  - Online Dance Resources and Tutorials
+  - Developing a Personal Dance Style
+  - Creative Exercises and Improvisation
+  - Staying Inspired: Finding Motivation and New Ideas
+- Business Skills for Dancers
+  - Basics of Entrepreneurship
+  - Understanding Contracts and Agreements
+  - Financial Management and Budgeting
+  - Marketing and Branding Yourself as a Dancer
+  - Networking and Building Professional Relationships
+- Content Creation for Dancers
+  - Creating Dance Videos: Filming and Editing
+  - Developing a YouTube Channel
+  - Engaging with Audiences on Social Media
+  - Collaborating with Other Artists
+  - Showcasing Performances and Behind-the-Scenes Content
+- Monetizing Dance Skills
+  - Teaching Dance Classes and Workshops
+  - Performing at Events and Competitions
+  - Sponsorships and Partnerships
+  - Selling Merchandise
+  - Crowdfunding and Patreon
+- Template Social Media Calendar
+  - Weekly Content Planning
+  - Ideas for Daily Posts
+  - Strategies for Engagement
+  - Analyzing Performance Metrics
