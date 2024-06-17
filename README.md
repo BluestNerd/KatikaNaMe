@@ -2,7 +2,6 @@
 ## A guide or tool for dancers to start, track and build a career.
 These are some content that I hope to develop to help performing artists especially dancers, grow in their dance and, transferable skills, and help them stay consistent. 
 
-/ (root)
 |-- index.md
 |-- 01-introduction/
 |   |-- understanding-talent-management.md
