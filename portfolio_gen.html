@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dancer Portfolio Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center text-purple-400">Dancer Portfolio Generator</h1>
+        
+        <form id="portfolioForm" class="bg-gray-800 p-6 rounded-lg shadow-lg mt-6">
+            <label class="block">Name:
+                <input type="text" id="name" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
+            </label>
+            
+            <label class="block mt-4">Profile Picture URL:
+                <input type="text" id="profilePic" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
+            </label>
+            
+            <label class="block mt-4">Years of Experience:
+                <input type="number" id="experience" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
+            </label>
+            
+            <label class="block mt-4">Previous Jobs:
+                <textarea id="jobs" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
+            </label>
+            
+            <label class="block mt-4">Social Media Impact (e.g., TikTok 50k, Instagram 30k):
+                <input type="text" id="social" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
+            </label>
+            
+            <label class="block mt-4">Services Offered:
+                <textarea id="services" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
+            </label>
+            
+            <button type="button" onclick="generatePortfolio()" class="mt-4 w-full bg-purple-500 hover:bg-purple-600 p-3 rounded">Generate Portfolio</button>
+        </form>
+        
+        <h2 class="text-2xl font-bold text-purple-400 mt-6">Generated Portfolio:</h2>
+        <div id="preview" class="bg-gray-800 p-6 rounded-lg shadow-lg mt-4"></div>
+        
+        <button id="downloadBtn" class="hidden mt-4 bg-blue-500 hover:bg-blue-600 p-3 rounded">Download YAML</button>
+    </div>
+
+    <script>
+        function generatePortfolio() {
+            const data = {
+                name: document.getElementById('name').value,
+                profilePic: document.getElementById('profilePic').value,
+                experience: document.getElementById('experience').value,
+                jobs: document.getElementById('jobs').value.split('\n'),
+                social: document.getElementById('social').value,
+                services: document.getElementById('services').value.split('\n')
+            };
+            
+            const yamlData = jsyaml.dump(data);
+            const preview = `
+                <div class='p-4 border border-purple-500 rounded'>
+                    <h3 class='text-xl font-bold'>${data.name}</h3>
+                    <img src='${data.profilePic}' class='w-32 h-32 rounded-full mt-2' />
+                    <p><strong>Experience:</strong> ${data.experience} years</p>
+                    <p><strong>Previous Jobs:</strong> ${data.jobs.join(', ')}</p>
+                    <p><strong>Social Media Impact:</strong> ${data.social}</p>
+                    <p><strong>Services:</strong> ${data.services.join(', ')}</p>
+                </div>
+            `;
+            document.getElementById('preview').innerHTML = preview;
+            
+            const blob = new Blob([yamlData], { type: 'text/yaml' });
+            const url = URL.createObjectURL(blob);
+            
+            const downloadBtn = document.getElementById('downloadBtn');
+            downloadBtn.classList.remove('hidden');
+            downloadBtn.onclick = function() {
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${data.name.replace(/\s+/g, '_')}_portfolio.yaml`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            };
+        }
+    </script>
+</body>
+</html>
