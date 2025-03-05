@@ -1,202 +1,43 @@
-<!-- CONTACT PAGE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | KatikaNaMe</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #0d0d0d;
-            color: #fff;
-            text-align: center;
-        }
-
-        /* HEADER */
-        header {
-            background: rgba(20, 20, 20, 0.9);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            transition: all 0.3s ease-in-out;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 20px;
-        }
-
-        nav ul li a {
-            color: #ff4081;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #ff79b0;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), 
-                        url('background-image.jpg') no-repeat center center/cover;
-            text-align: center;
-            padding: 20px;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(255, 64, 129, 0.6);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-
-        .cta-button {
-            background: #ff4081;
-            color: white;
-            padding: 12px 25px;
-            margin-top: 20px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
-        }
-
-        .cta-button:hover {
-            background: #ff79b0;
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255, 64, 129, 0.6);
-        }
-
-        /* ABOUT SECTION */
-        .about {
-            padding: 60px 20px;
-            background: #1a1a1a;
-            margin-top: 30px;
-        }
-
-        .about h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .about p {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: auto;
-            opacity: 0.9;
-        }
-
-        /* FOOTER */
-        .footer {
-            background: #0d0d0d;
-            padding: 20px;
-            margin-top: 50px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        /* ANIMATIONS */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* MEDIA QUERIES */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .cta-button {
-                font-size: 1rem;
-                padding: 10px 20px;
-            }
-
-            nav ul li {
-                margin: 0 10px;
-            }
-
-            nav ul li a {
-                font-size: 16px;
-            }
-        }
-    </style>
+    <title>Contact Us | KatikaNaMe</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Contact Us</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="generator.html">Portfolio Generator</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section class="contact-form">
-        <h2>Get in Touch</h2>
-        <p>Have questions or want to collaborate? Reach out to us!</p>
-        <form action="mailto:bluenerdsolutions@gmail.com" method="post" enctype="text/plain">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            
-            <button type="submit">Send</button>
-        </form>
-    </section>
-    
-    <footer>
-        <p>© 2024 KatikaNaMe. All Rights Reserved.</p>
-    </footer>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio_gen.html">Dance Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="container">
+    <h1>Contact Us</h1>
+    <p>Have questions, suggestions, or want to collaborate? Reach out to us!</p>
+
+    <h2>Email</h2>
+    <p><a href="mailto:bluenerdsolutions@gmail.com">bluenerdsolutions@gmail.com</a></p>
+
+    <h2>Social Media</h2>
+    <p>Follow us and stay updated with the latest dance opportunities:</p>
+    <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Facebook</a></li>
+    </ul>
+</section>
+
+<footer class="footer">
+    <p>© 2025 KatikaNaMe. All Rights Reserved.</p>
+</footer>
+
 </body>
 </html>
