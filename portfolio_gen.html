@@ -10,6 +10,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
 </head>
 <body class="bg-gray-900 text-white">
+    <header>
+        <h1>About KatikaNaMe</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="generator.html">Portfolio Generator</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
     <div class="container mx-auto p-6">
         <h1 class="text-3xl font-bold text-center text-purple-400">Dancer Portfolio Generator</h1>
         
@@ -29,7 +41,7 @@
             <label class="block mt-4">Previous Jobs:</label>
             <textarea id="jobs" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
             
-            <label class="block mt-4">Social Media Impact (e.g., TikTok 50k, Instagram 30k)</label>
+            <label class="block mt-4">Social Media Impact:</label>
             <input type="text" id="social" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
             
             <label class="block mt-4">Services Offered:</label>
@@ -46,74 +58,7 @@
         <button id="downloadPdfBtn" class="hidden mt-4 bg-green-500 hover:bg-green-600 p-3 rounded">Download PDF</button>
     </div>
 
-    <script>
-        function saveToYaml() {
-            const data = {
-                name: document.getElementById('name').value,
-                profilePic: document.getElementById('profilePic').value,
-                experience: document.getElementById('experience').value,
-                jobs: document.getElementById('jobs').value.split('\n'),
-                social: document.getElementById('social').value,
-                services: document.getElementById('services').value.split('\n')
-            };
-            localStorage.setItem('portfolioData', jsyaml.dump(data));
-            alert("Portfolio saved!");
-        }
-
-        function loadFromYaml() {
-            const yamlData = localStorage.getItem('portfolioData');
-            if (yamlData) {
-                const data = jsyaml.load(yamlData);
-                document.getElementById('name').value = data.name;
-                document.getElementById('profilePic').value = data.profilePic;
-                document.getElementById('experience').value = data.experience;
-                document.getElementById('jobs').value = data.jobs.join('\n');
-                document.getElementById('social').value = data.social;
-                document.getElementById('services').value = data.services.join('\n');
-                alert("Portfolio loaded!");
-            } else {
-                alert("No saved portfolio found.");
-            }
-        }
-
-        function generatePortfolio() {
-            const yamlData = localStorage.getItem('portfolioData');
-            if (!yamlData) {
-                alert("No saved data to generate portfolio.");
-                return;
-            }
-            const data = jsyaml.load(yamlData);
-            
-            const preview = `
-                <div class='p-4 border border-purple-500 rounded'>
-                    <h3 class='text-xl font-bold'>${data.name}</h3>
-                    <img src='${data.profilePic}' class='w-32 h-32 rounded-full mt-2' />
-                    <p><strong>Experience:</strong> ${data.experience} years</p>
-                    <p><strong>Previous Jobs:</strong> ${data.jobs.join(', ')}</p>
-                    <p><strong>Social Media Impact:</strong> ${data.social}</p>
-                    <p><strong>Services:</strong> ${data.services.join(', ')}</p>
-                </div>
-            `;
-            document.getElementById('preview').innerHTML = preview;
-            document.getElementById('downloadPdfBtn').classList.remove('hidden');
-            document.getElementById('downloadPdfBtn').onclick = function() {
-                generatePdf(data);
-            };
-        }
-
-        function generatePdf(data) {
-            const docDefinition = {
-                content: [
-                    { text: data.name, fontSize: 20, bold: true },
-                    { image: data.profilePic, width: 100, height: 100 },
-                    { text: `Experience: ${data.experience} years`, margin: [0, 10, 0, 10] },
-                    { text: `Previous Jobs: ${data.jobs.join(', ')}` },
-                    { text: `Social Media Impact: ${data.social}` },
-                    { text: `Services: ${data.services.join(', ')}` }
-                ]
-            };
-            pdfMake.createPdf(docDefinition).download("Dancer_Portfolio.pdf");
-        }
-    </script>
+    <!-- Link to External JavaScript File -->
+    <script src="script.js"></script>
 </body>
 </html>
