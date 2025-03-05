@@ -132,3 +132,52 @@ form button {
     font-size: 14px;
     opacity: 0.8;
 }
+
+
+.about-content, .contact-form-section {
+    padding: 50px 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.feature-box {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.cta-button {
+    background: #ff4081;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.contact-form-section input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.contact-form-section button {
+    width: 100%;
+    padding: 10px;
+    background: #ff4081;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
