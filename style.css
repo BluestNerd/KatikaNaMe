@@ -50,6 +50,7 @@ nav ul li a:hover {
 /* HERO SECTION */
 .hero {
     height: 50vh;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
