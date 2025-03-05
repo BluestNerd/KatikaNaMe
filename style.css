@@ -49,7 +49,7 @@ nav ul li a:hover {
 
 /* HERO SECTION */
 .hero {
-    padding: 40px 10px; /* Adds space without forcing a fixed height */
+    padding: 90px 70px; /* Adds space without forcing a fixed height */
     min-height: 40vh; /* Ensures it doesn't become too small */
     flex-direction: column;
     align-items: center;
