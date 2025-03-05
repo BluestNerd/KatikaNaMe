@@ -145,13 +145,13 @@ form button {
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 30px;
 }
 
 .feature-box {
     background: #1a1a1a;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
 }
 
