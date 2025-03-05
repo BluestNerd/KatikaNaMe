@@ -49,7 +49,7 @@ nav ul li a:hover {
 
 /* HERO SECTION */
 .hero {
-    height: 50vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
