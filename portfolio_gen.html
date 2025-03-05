@@ -26,17 +26,14 @@
                 <input type="number" id="experience" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
             </label>
             
-            <label class="block mt-4">Previous Jobs:
-                <textarea id="jobs" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
-            </label>
+            <label class="block mt-4">Previous Jobs:</label>
+            <textarea id="jobs" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
             
-            <label class="block mt-4">Social Media Impact (e.g., TikTok 50k, Instagram 30k)
-                <input type="text" id="social" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
+            <label class="block mt-4">Social Media Impact (e.g., TikTok 50k, Instagram 30k):</label>
+            <input type="text" id="social" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
             
-            <label class="block mt-4">Services Offered:
-                <textarea id="services" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
-            </label>
+            <label class="block mt-4">Services Offered:</label>
+            <textarea id="services" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
             
             <button type="button" onclick="generatePortfolio()" class="mt-4 w-full bg-purple-500 hover:bg-purple-600 p-3 rounded">Generate Portfolio</button>
         </form>
@@ -78,14 +75,18 @@
         function generatePdf(data) {
             const docDefinition = {
                 content: [
-                    { text: data.name, fontSize: 22, bold: true, margin: [0, 0, 0, 10] },
-                    data.profilePic ? { image: data.profilePic, width: 100, alignment: 'center', margin: [0, 0, 0, 10] } : {},
+                    { text: data.name, fontSize: 26, bold: true, alignment: 'center', margin: [0, 0, 0, 10] },
+                    data.profilePic ? { image: data.profilePic, width: 150, alignment: 'center', margin: [0, 0, 0, 10] } : {},
+                    { text: 'About Me', fontSize: 18, bold: true, margin: [0, 10, 0, 5] },
                     { text: `Experience: ${data.experience} years`, margin: [0, 0, 0, 10] },
-                    { text: 'Previous Jobs:', bold: true, margin: [0, 0, 0, 5] },
+                    { text: 'Performance History', fontSize: 18, bold: true, margin: [0, 10, 0, 5] },
                     { ul: data.jobs.length ? data.jobs : ['No previous jobs listed'] },
-                    { text: `Social Media Impact: ${data.social || 'No data provided'}`, margin: [0, 10, 0, 10] },
-                    { text: 'Services Offered:', bold: true, margin: [0, 0, 0, 5] },
+                    { text: 'Social Media Impact', fontSize: 18, bold: true, margin: [0, 10, 0, 5] },
+                    { text: data.social || 'No data provided' },
+                    { text: 'Services Offered', fontSize: 18, bold: true, margin: [0, 10, 0, 5] },
                     { ul: data.services.length ? data.services : ['No services listed'] },
+                    { text: 'Contact', fontSize: 18, bold: true, margin: [0, 10, 0, 5] },
+                    { text: 'For bookings and inquiries, please contact me.', italics: true }
                 ].filter(item => Object.keys(item).length > 0)
             };
             pdfMake.createPdf(docDefinition).download(`${data.name.replace(/\s+/g, '_')}_Portfolio.pdf`);
