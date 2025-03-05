@@ -3,90 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dancer Portfolio Generator</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
+    <title>Dance Portfolio Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900 text-white">
-    <header>
-        <h1>About KatikaNaMe</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Dance Portfolio</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h1 class="text-3xl font-bold text-purple-400">Dancer Portfolio Generator</h1>
     
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold text-center text-purple-400">Dancer Portfolio Generator</h1>
-        
-        <form id="portfolioForm" class="bg-gray-800 p-6 rounded-lg shadow-lg mt-6">
-            <label class="block">Name:
-                <input type="text" id="name" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
+    <form id="portfolioForm">
+        <label>Name: <input type="text" id="name"></label>
+        <label>Profile Picture URL: <input type="text" id="profilePic"></label>
+        <label>Years of Experience: <input type="number" id="experience"></label>
+        <label>Previous Jobs:</label>
+        <textarea id="jobs"></textarea>
+        <label>Social Media Impact:</label>
+        <input type="text" id="social">
+        <label>Services Offered:</label>
+        <textarea id="services"></textarea>
+        <button type="button" onclick="saveToYaml()">Save Portfolio</button>
+        <button type="button" onclick="loadFromYaml()">Load Portfolio</button>
+        <button type="button" onclick="generatePortfolio()">Generate Portfolio</button>
+    </form>
 
-            <label class="block mt-4">Professional Title:
-                <input type="text" id="title" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
-            
-            <label class="block mt-4">Profile Picture URL:
-                <input type="text" id="profilePic" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
+    <h2>Generated Portfolio:</h2>
+    <div id="preview"></div>
+    <button id="downloadPdfBtn" class="hidden">Download PDF</button>
+</div>
 
-            <label class="block mt-4">About Me:
-                <textarea id="aboutMe" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
-            </label>
-            
-            <label class="block mt-4">Years of Experience:
-                <input type="number" id="experience" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
-            
-            <label class="block mt-4">Performance History (Previous Jobs):
-                <textarea id="jobs" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
-            </label>
-            
-            <label class="block mt-4">Notable Shows & Competitions:
-                <textarea id="shows" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
-            </label>
-
-            <label class="block mt-4">Social Media Impact:
-                <input type="text" id="social" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
-
-            <label class="block mt-4">Services Offered:
-                <textarea id="services" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
-            </label>
-
-            <label class="block mt-4">Testimonials:
-                <textarea id="testimonials" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
-            </label>
-
-            <label class="block mt-4">Contact Email:
-                <input type="email" id="contactEmail" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
-
-            <label class="block mt-4">Phone Number:
-                <input type="text" id="phone" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
-            
-            <button type="button" onclick="saveToYaml()" class="mt-4 w-full bg-blue-500 hover:bg-blue-600 p-3 rounded">Save Portfolio</button>
-            <button type="button" onclick="loadFromYaml()" class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 p-3 rounded">Load Portfolio</button>
-            <button type="button" onclick="generatePortfolio()" class="mt-4 w-full bg-purple-500 hover:bg-purple-600 p-3 rounded">Generate Portfolio</button>
-        </form>
-
-        <h2 class="text-2xl font-bold text-purple-400 mt-6">Generated Portfolio:</h2>
-        <div id="preview" class="bg-gray-800 p-6 rounded-lg shadow-lg mt-4"></div>
-
-        <button id="downloadPdfBtn" class="hidden mt-4 bg-green-500 hover:bg-green-600 p-3 rounded">Download PDF</button>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
