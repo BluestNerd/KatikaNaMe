@@ -29,12 +29,14 @@
             <label class="block mt-4">Previous Jobs:</label>
             <textarea id="jobs" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
             
-            <label class="block mt-4">Social Media Follow:</label>
+            <label class="block mt-4">Social Media Impact (e.g., TikTok 50k, Instagram 30k)</label>
             <input type="text" id="social" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
             
             <label class="block mt-4">Services Offered:</label>
             <textarea id="services" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
             
+            <button type="button" onclick="saveToYaml()" class="mt-4 w-full bg-blue-500 hover:bg-blue-600 p-3 rounded">Save Portfolio</button>
+            <button type="button" onclick="loadFromYaml()" class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 p-3 rounded">Load Portfolio</button>
             <button type="button" onclick="generatePortfolio()" class="mt-4 w-full bg-purple-500 hover:bg-purple-600 p-3 rounded">Generate Portfolio</button>
         </form>
         
@@ -45,7 +47,7 @@
     </div>
 
     <script>
-        function generatePortfolio() {
+        function saveToYaml() {
             const data = {
                 name: document.getElementById('name').value,
                 profilePic: document.getElementById('profilePic').value,
@@ -54,6 +56,33 @@
                 social: document.getElementById('social').value,
                 services: document.getElementById('services').value.split('\n')
             };
+            localStorage.setItem('portfolioData', jsyaml.dump(data));
+            alert("Portfolio saved!");
+        }
+
+        function loadFromYaml() {
+            const yamlData = localStorage.getItem('portfolioData');
+            if (yamlData) {
+                const data = jsyaml.load(yamlData);
+                document.getElementById('name').value = data.name;
+                document.getElementById('profilePic').value = data.profilePic;
+                document.getElementById('experience').value = data.experience;
+                document.getElementById('jobs').value = data.jobs.join('\n');
+                document.getElementById('social').value = data.social;
+                document.getElementById('services').value = data.services.join('\n');
+                alert("Portfolio loaded!");
+            } else {
+                alert("No saved portfolio found.");
+            }
+        }
+
+        function generatePortfolio() {
+            const yamlData = localStorage.getItem('portfolioData');
+            if (!yamlData) {
+                alert("No saved data to generate portfolio.");
+                return;
+            }
+            const data = jsyaml.load(yamlData);
             
             const preview = `
                 <div class='p-4 border border-purple-500 rounded'>
@@ -75,21 +104,15 @@
         function generatePdf(data) {
             const docDefinition = {
                 content: [
-                    { text: data.name, fontSize: 26, bold: true, alignment: 'center', margin: [0, 0, 0, 10] },
-                    data.profilePic ? { image: data.profilePic, width: 150, alignment: 'center', margin: [0, 0, 0, 10] } : {},
-                    { text: 'About Me', fontSize: 18, bold: true, margin: [0, 10, 0, 5] },
-                    { text: `Experience: ${data.experience} years`, margin: [0, 0, 0, 10] },
-                    { text: 'Performance History', fontSize: 18, bold: true, margin: [0, 10, 0, 5] },
-                    { ul: data.jobs.length ? data.jobs : ['No previous jobs listed'] },
-                    { text: 'Social Media Impact', fontSize: 18, bold: true, margin: [0, 10, 0, 5] },
-                    { text: data.social || 'No data provided' },
-                    { text: 'Services Offered', fontSize: 18, bold: true, margin: [0, 10, 0, 5] },
-                    { ul: data.services.length ? data.services : ['No services listed'] },
-                    { text: 'Contact', fontSize: 18, bold: true, margin: [0, 10, 0, 5] },
-                    { text: 'For bookings and inquiries, please contact me.', italics: true }
-                ].filter(item => Object.keys(item).length > 0)
+                    { text: data.name, fontSize: 20, bold: true },
+                    { image: data.profilePic, width: 100, height: 100 },
+                    { text: `Experience: ${data.experience} years`, margin: [0, 10, 0, 10] },
+                    { text: `Previous Jobs: ${data.jobs.join(', ')}` },
+                    { text: `Social Media Impact: ${data.social}` },
+                    { text: `Services: ${data.services.join(', ')}` }
+                ]
             };
-            pdfMake.createPdf(docDefinition).download(`${data.name.replace(/\s+/g, '_')}_Portfolio.pdf`);
+            pdfMake.createPdf(docDefinition).download("Dancer_Portfolio.pdf");
         }
     </script>
 </body>
