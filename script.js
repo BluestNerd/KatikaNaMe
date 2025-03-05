@@ -1,6 +1,5 @@
 async function convertImageToBase64(url) {
     if (!url) return null;
-
     try {
         const response = await fetch(url);
         const blob = await response.blob();
@@ -18,13 +17,8 @@ async function convertImageToBase64(url) {
 
 function validateForm() {
     const name = document.getElementById('name').value.trim();
-    const experience = document.getElementById('experience').value.trim();
     if (!name) {
-        alert("Please enter a name.");
-        return false;
-    }
-    if (!experience || isNaN(experience) || parseInt(experience) < 0) {
-        alert("Please enter a valid number for experience.");
+        alert("Please enter your name.");
         return false;
     }
     return true;
@@ -35,48 +29,25 @@ async function saveToYaml() {
 
     const data = {
         name: document.getElementById('name').value.trim(),
+        title: document.getElementById('title').value.trim(),
         profilePic: document.getElementById('profilePic').value.trim(),
+        contactEmail: document.getElementById('contactEmail').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        social: document.getElementById('social').value.trim(),
+        aboutMe: document.getElementById('aboutMe').value.trim(),
         experience: parseInt(document.getElementById('experience').value) || 0,
         jobs: document.getElementById('jobs').value.split('\n').filter(job => job.trim() !== ""),
-        social: document.getElementById('social').value.trim(),
-        services: document.getElementById('services').value.split('\n').filter(service => service.trim() !== "")
+        shows: document.getElementById('shows').value.split('\n').filter(show => show.trim() !== ""),
+        services: document.getElementById('services').value.split('\n').filter(service => service.trim() !== ""),
+        testimonials: document.getElementById('testimonials').value.split('\n').filter(testimonial => testimonial.trim() !== "")
     };
 
-    try {
-        localStorage.setItem('portfolioData', jsyaml.dump(data));
-        alert("Portfolio saved!");
-    } catch (error) {
-        console.error("Error saving portfolio:", error);
-        alert("Failed to save portfolio.");
-    }
-}
-
-function loadFromYaml() {
-    try {
-        const yamlData = localStorage.getItem('portfolioData');
-        if (!yamlData) {
-            alert("No saved portfolio found.");
-            return;
-        }
-        const data = jsyaml.load(yamlData);
-
-        document.getElementById('name').value = data.name || "";
-        document.getElementById('profilePic').value = data.profilePic || "";
-        document.getElementById('experience').value = data.experience || 0;
-        document.getElementById('jobs').value = (data.jobs || []).join('\n');
-        document.getElementById('social').value = data.social || "";
-        document.getElementById('services').value = (data.services || []).join('\n');
-
-        alert("Portfolio loaded!");
-    } catch (error) {
-        console.error("Error loading portfolio:", error);
-        alert("Failed to load portfolio.");
-    }
+    localStorage.setItem('portfolioData', jsyaml.dump(data));
+    alert("Portfolio saved!");
 }
 
 async function generatePortfolio() {
     if (!validateForm()) return;
-
     const yamlData = localStorage.getItem('portfolioData');
     if (!yamlData) {
         alert("No saved data to generate portfolio.");
@@ -94,13 +65,37 @@ async function generatePortfolio() {
 function generatePdf(data) {
     const docDefinition = {
         content: [
-            { text: data.name, fontSize: 20, bold: true },
-            data.profilePicBase64 ? { image: data.profilePicBase64, width: 100, height: 100 } : {},
-            { text: `Experience: ${data.experience} years`, margin: [0, 10, 0, 10] },
-            { text: `Previous Jobs: ${data.jobs.join(', ') || "N/A"}` },
-            { text: `Social Media Impact: ${data.social || "N/A"}` },
-            { text: `Services: ${data.services.join(', ') || "N/A"}` }
-        ]
+            // Cover Page
+            { text: data.name, fontSize: 28, bold: true, alignment: 'center' },
+            { text: data.title, fontSize: 18, italics: true, alignment: 'center', margin: [0, 10, 0, 20] },
+            data.profilePicBase64 ? { image: data.profilePicBase64, width: 150, alignment: 'center' } : {},
+            { text: `Contact: ${data.contactEmail} | ${data.phone}`, alignment: 'center', margin: [0, 10, 0, 10] },
+            { text: `Social: ${data.social}`, alignment: 'center', margin: [0, 0, 0, 30] },
+
+            // About Me
+            { text: "About Me", style: "header" },
+            { text: data.aboutMe, margin: [0, 10, 0, 10] },
+            { text: `Experience: ${data.experience} years` },
+
+            // Performance History
+            { text: "Performance History", style: "header" },
+            { ul: data.jobs },
+
+            // Services
+            { text: "Services Offered", style: "header" },
+            { ul: data.services },
+
+            // Testimonials
+            { text: "Testimonials", style: "header" },
+            { ul: data.testimonials },
+
+            // Contact
+            { text: "Contact Me", style: "header" },
+            { text: `Email: ${data.contactEmail} | Phone: ${data.phone}`, margin: [0, 10, 0, 0] },
+        ],
+        styles: {
+            header: { fontSize: 18, bold: true, margin: [0, 10, 0, 5] }
+        }
     };
 
     pdfMake.createPdf(docDefinition).download("Dancer_Portfolio.pdf");
