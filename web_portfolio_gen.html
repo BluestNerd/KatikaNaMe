@@ -1,0 +1,81 @@
+<!-- Portfolio Generator Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dancer Portfolio Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>KatikaNaMe - Dancer Portfolio Generator</h1>
+    </header>
+
+    <main>
+        <form id="portfolioForm">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <label>Name: <input type="text" id="name"></label>
+                <label>Professional Title: <input type="text" id="title"></label>
+                <label>Profile Picture: <input type="file" id="profilePic" accept="image/jpeg"></label>
+                <img id="profilePreview" src="" alt="Profile Preview" style="max-width: 150px; display: none; margin-top: 10px;">
+                <input type="hidden" id="profilePicBase64">
+            </fieldset>
+
+            <fieldset>
+                <legend>Portfolio Details</legend>
+                <label>About Me: <textarea id="aboutMe"></textarea></label>
+                <label>Performance History: <textarea id="jobs"></textarea></label>
+                <label>Social Media Impact: <input type="text" id="social"></label>
+                <label>Services Offered: <textarea id="services"></textarea></label>
+                <label>Testimonials: <textarea id="testimonials"></textarea></label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Contact Information</legend>
+                <label>Contact Email: <input type="email" id="contactEmail"></label>
+                <label>Phone Number: <input type="text" id="phone"></label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Customization</legend>
+                <label>Primary Color:
+                    <select id="primaryColor">
+                        <option value="#ff4081">Pink</option>
+                        <option value="#007bff">Blue</option>
+                        <option value="#28a745">Green</option>
+                        <option value="#ffcc00">Yellow</option>
+                    </select>
+                </label>
+                <label>Secondary Color:
+                    <select id="secondaryColor">
+                        <option value="#ffffff">White</option>
+                        <option value="#f8f9fa">Light Gray</option>
+                        <option value="#343a40">Dark Gray</option>
+                        <option value="#000000">Black</option>
+                    </select>
+                </label>
+            </fieldset>
+
+            <button type="button" onclick="generatePortfolio()">Generate Web Portfolio</button>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('profilePic').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profilePreview').src = e.target.result;
+                    document.getElementById('profilePreview').style.display = 'block';
+                    document.getElementById('profilePicBase64').value = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
