@@ -4,102 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dancer Portfolio Generator</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-900 text-white">
+<body>
 
-    <header class="bg-gray-800 p-4 shadow-md">
-        <nav class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-purple-400">KatikaNaMe</h1>
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="text-purple-300 hover:text-purple-500">Home</a></li>
-                <li><a href="portfolio_gen.html" class="text-purple-300 hover:text-purple-500">Dance Portfolio Generator</a></li>
-                <li><a href="about.html" class="text-purple-300 hover:text-purple-500">About</a></li>
-                <li><a href="contact.html" class="text-purple-300 hover:text-purple-500">Contact</a></li>
+    <header>
+        <h1>KatikaNaMe - Dancer Portfolio Generator</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio_gen.html">Portfolio Generator</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="portfolio-generator flex items-center justify-center min-h-screen p-6">
-        <div class="generator-container w-full max-w-3xl bg-gray-800 p-8 rounded-lg shadow-2xl">
-            <h1 class="text-4xl font-bold text-center text-purple-400 mb-6">Dancer Portfolio Generator</h1>
+    <main class="container">
+        <h2>Create Your Professional Dance Portfolio</h2>
+        <form id="portfolioForm">
+            <!-- Personal Information -->
+            <fieldset>
+                <legend>Personal Information</legend>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
 
-            <form id="portfolioForm">
-                <label class="block mb-4">Name:
-                    <input type="text" id="name" class="input-field">
-                </label>
+                <label for="title">Professional Title:</label>
+                <input type="text" id="title" name="title" required>
 
-                <label class="block mb-4">Professional Title:
-                    <input type="text" id="title" class="input-field">
-                </label>
+                <label for="profilePic">Profile Picture:</label>
+                <input type="file" id="profilePic" name="profilePic" accept="image/*">
+                <img id="profilePreview" src="#" alt="Profile Preview" style="display:none; max-width: 150px; margin-top: 10px;">
+            </fieldset>
 
-                <label class="block mb-4">Profile Picture URL:
-                    <input type="text" id="profilePic" class="input-field">
-                </label>
-                <img id="profilePreview" class="hidden mx-auto mt-3 w-32 h-32 rounded-lg shadow-lg">
+            <!-- Portfolio Details -->
+            <fieldset>
+                <legend>Portfolio Details</legend>
+                <label for="aboutMe">About Me:</label>
+                <textarea id="aboutMe" name="aboutMe" rows="4" required></textarea>
 
-                <label class="block mb-4">About Me:
-                    <textarea id="aboutMe" class="input-field h-28"></textarea>
-                </label>
+                <label for="jobs">Performance History:</label>
+                <textarea id="jobs" name="jobs" rows="4" required></textarea>
 
-                <label class="block mb-4">Years of Experience:
-                    <input type="number" id="experience" class="input-field">
-                </label>
+                <label for="social">Social Media Impact:</label>
+                <input type="text" id="social" name="social" required>
 
-                <label class="block mb-4">Performance History (Previous Jobs):
-                    <textarea id="jobs" class="input-field h-24"></textarea>
-                </label>
+                <label for="services">Services Offered:</label>
+                <textarea id="services" name="services" rows="4" required></textarea>
 
-                <label class="block mb-4">Notable Shows & Competitions:
-                    <textarea id="shows" class="input-field h-24"></textarea>
-                </label>
+                <label for="testimonials">Testimonials:</label>
+                <textarea id="testimonials" name="testimonials" rows="4" required></textarea>
+            </fieldset>
 
-                <label class="block mb-4">Social Media Impact:
-                    <input type="text" id="social" class="input-field">
-                </label>
+            <!-- Contact Information -->
+            <fieldset>
+                <legend>Contact Information</legend>
+                <label for="contactEmail">Contact Email:</label>
+                <input type="email" id="contactEmail" name="contactEmail" required>
 
-                <label class="block mb-4">Services Offered:
-                    <textarea id="services" class="input-field h-24"></textarea>
-                </label>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </fieldset>
 
-                <label class="block mb-4">Testimonials:
-                    <textarea id="testimonials" class="input-field h-24"></textarea>
-                </label>
+            <!-- Customization -->
+            <fieldset>
+                <legend>Customization</legend>
+                <label for="primaryColor">Primary Color:</label>
+                <select id="primaryColor" name="primaryColor">
+                    <option value="#ff4081">Pink</option>
+                    <option value="#007bff">Blue</option>
+                    <option value="#28a745">Green</option>
+                    <option value="#ffcc00">Yellow</option>
+                </select>
 
-                <label class="block mb-4">Contact Email:
-                    <input type="email" id="contactEmail" class="input-field">
-                </label>
+                <label for="secondaryColor">Secondary Color:</label>
+                <select id="secondaryColor" name="secondaryColor">
+                    <option value="#ffffff">White</option>
+                    <option value="#f8f9fa">Light Gray</option>
+                    <option value="#343a40">Dark Gray</option>
+                    <option value="#000000">Black</option>
+                </select>
+            </fieldset>
 
-                <label class="block mb-4">Phone Number:
-                    <input type="text" id="phone" class="input-field">
-                </label>
+            <button type="submit">Generate Web Portfolio</button>
+        </form>
+    </main>
 
-                <div class="flex flex-col gap-4 mt-6">
-                    <button type="button" onclick="saveToYaml()" class="btn bg-blue-500 hover:bg-blue-600">Save Portfolio</button>
-                    <button type="button" onclick="loadFromYaml()" class="btn bg-yellow-500 hover:bg-yellow-600">Load Portfolio</button>
-                    <button type="button" onclick="generatePortfolio()" class="btn bg-purple-500 hover:bg-purple-600">Generate Portfolio</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <h2 class="text-2xl font-bold text-purple-400 text-center mt-10">Generated Portfolio:</h2>
-    <div id="preview" class="container mx-auto bg-gray-800 p-6 rounded-lg shadow-lg mt-4"></div>
-
-    <button id="downloadPdfBtn" class="hidden mt-4 mx-auto block bg-green-500 hover:bg-green-600 p-3 rounded">Download PDF</button>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
     <script src="script.js"></script>
-
     <script>
-        // Profile Picture Preview
-        document.getElementById('profilePic').addEventListener('input', function () {
-            let img = document.getElementById('profilePreview');
-            img.src = this.value;
-            img.classList.remove('hidden');
-        });
-    </script>
-</body>
-</html>
+        document.getElementById('profilePic').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('profilePreview');
+                    preview.src = e.target.result;
+                    preview.style.display
+::contentReference[oaicite:0]{index=0}
+ 
