@@ -4,101 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dancer Portfolio Generator</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
 </head>
-<body>
-
-    <header>
-        <h1>KatikaNaMe - Dancer Portfolio Generator</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="portfolio_gen.html">Portfolio Generator</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main class="container">
-        <h2>Create Your Professional Dance Portfolio</h2>
-        <form id="portfolioForm">
-            <!-- Personal Information -->
-            <fieldset>
-                <legend>Personal Information</legend>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="title">Professional Title:</label>
-                <input type="text" id="title" name="title" required>
-
-                <label for="profilePic">Profile Picture:</label>
-                <input type="file" id="profilePic" name="profilePic" accept="image/*">
-                <img id="profilePreview" src="#" alt="Profile Preview" style="display:none; max-width: 150px; margin-top: 10px;">
-            </fieldset>
-
-            <!-- Portfolio Details -->
-            <fieldset>
-                <legend>Portfolio Details</legend>
-                <label for="aboutMe">About Me:</label>
-                <textarea id="aboutMe" name="aboutMe" rows="4" required></textarea>
-
-                <label for="jobs">Performance History:</label>
-                <textarea id="jobs" name="jobs" rows="4" required></textarea>
-
-                <label for="social">Social Media Impact:</label>
-                <input type="text" id="social" name="social" required>
-
-                <label for="services">Services Offered:</label>
-                <textarea id="services" name="services" rows="4" required></textarea>
-
-                <label for="testimonials">Testimonials:</label>
-                <textarea id="testimonials" name="testimonials" rows="4" required></textarea>
-            </fieldset>
-
-            <!-- Contact Information -->
-            <fieldset>
-                <legend>Contact Information</legend>
-                <label for="contactEmail">Contact Email:</label>
-                <input type="email" id="contactEmail" name="contactEmail" required>
-
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
-            </fieldset>
-
-            <!-- Customization -->
-            <fieldset>
-                <legend>Customization</legend>
-                <label for="primaryColor">Primary Color:</label>
-                <select id="primaryColor" name="primaryColor">
-                    <option value="#ff4081">Pink</option>
-                    <option value="#007bff">Blue</option>
-                    <option value="#28a745">Green</option>
-                    <option value="#ffcc00">Yellow</option>
-                </select>
-
-                <label for="secondaryColor">Secondary Color:</label>
-                <select id="secondaryColor" name="secondaryColor">
-                    <option value="#ffffff">White</option>
-                    <option value="#f8f9fa">Light Gray</option>
-                    <option value="#343a40">Dark Gray</option>
-                    <option value="#000000">Black</option>
-                </select>
-            </fieldset>
-
-            <button type="submit">Generate Web Portfolio</button>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center text-purple-400">Dancer Portfolio Generator</h1>
+        
+        <form id="portfolioForm" class="bg-gray-800 p-6 rounded-lg shadow-lg mt-6">
+            <label class="block">Name:
+                <input type="text" id="name" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
+            </label>
+            
+            <label class="block mt-4">Profile Picture URL:
+                <input type="text" id="profilePic" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
+            </label>
+            
+            <label class="block mt-4">Years of Experience:
+                <input type="number" id="experience" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
+            </label>
+            
+            <label class="block mt-4">Previous Jobs:</label>
+            <textarea id="jobs" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
+            
+            <label class="block mt-4">Social Media Impact (e.g., TikTok 50k, Instagram 30k)</label>
+            <input type="text" id="social" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
+            
+            <label class="block mt-4">Services Offered:</label>
+            <textarea id="services" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
+            
+            <button type="button" onclick="saveToYaml()" class="mt-4 w-full bg-blue-500 hover:bg-blue-600 p-3 rounded">Save Portfolio</button>
+            <button type="button" onclick="loadFromYaml()" class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 p-3 rounded">Load Portfolio</button>
+            <button type="button" onclick="generatePortfolio()" class="mt-4 w-full bg-purple-500 hover:bg-purple-600 p-3 rounded">Generate Portfolio</button>
         </form>
-    </main>
+        
+        <h2 class="text-2xl font-bold text-purple-400 mt-6">Generated Portfolio:</h2>
+        <div id="preview" class="bg-gray-800 p-6 rounded-lg shadow-lg mt-4"></div>
+        
+        <button id="downloadPdfBtn" class="hidden mt-4 bg-green-500 hover:bg-green-600 p-3 rounded">Download PDF</button>
+    </div>
 
-    <script src="script.js"></script>
     <script>
-        document.getElementById('profilePic').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const preview = document.getElementById('profilePreview');
-                    preview.src = e.target.result;
-                    preview.style.display
-::contentReference[oaicite:0]{index=0}
- 
+        function saveToYaml() {
+            const data = {
+                name: document.getElementById('name').value,
+                profilePic: document.getElementById('profilePic').value,
+                experience: document.getElementById('experience').value,
+                jobs: document.getElementById('jobs').value.split('\n'),
+                social: document.getElementById('social').value,
+                services: document.getElementById('services').value.split('\n')
+            };
+            localStorage.setItem('portfolioData', jsyaml.dump(data));
+            alert("Portfolio saved!");
+        }
+
+        function loadFromYaml() {
+            const yamlData = localStorage.getItem('portfolioData');
+            if (yamlData) {
+                const data = jsyaml.load(yamlData);
+                document.getElementById('name').value = data.name || "";
+                document.getElementById('profilePic').value = data.profilePic || "";
+                document.getElementById('experience').value = data.experience || "";
+                document.getElementById('jobs').value = (data.jobs || []).join('\n');
+                document.getElementById('social').value = data.social || "";
+                document.getElementById('services').value = (data.services || []).join('\n');
+                alert("Portfolio loaded!");
+            } else {
+                alert("No saved portfolio found.");
+            }
+        }
+
+        function generatePortfolio() {
+            const yamlData = localStorage.getItem('portfolioData');
+            if (!yamlData) {
+                alert("No saved data to generate portfolio.");
+                return;
+            }
+            const data = jsyaml.load(yamlData);
+            
+            const preview = `
+                <div class='p-4 border border-purple-500 rounded'>
+                    <h3 class='text-xl font-bold'>${data.name}</h3>
+                    <img src='${data.profilePic}' class='w-32 h-32 rounded-full mt-2' />
+                    <p><strong>Experience:</strong> ${data.experience} years</p>
+                    <p><strong>Previous Jobs:</strong> ${data.jobs.join(', ')}</p>
+                    <p><strong>Social Media Impact:</strong> ${data.social}</p>
+                    <p><strong>Services:</strong> ${data.services.join(', ')}</p>
+                </div>
+            `;
+            document.getElementById('preview').innerHTML = preview;
+            document.getElementById('downloadPdfBtn').classList.remove('hidden');
+            document.getElementById('downloadPdfBtn').onclick = function() {
+                generatePdf(data);
+            };
+        }
+
+        function generatePdf(data) {
+            const docDefinition = {
+                content: [
+                    { text: data.name, style: 'header' },
+                    { image: data.profilePic, width: 100 },
+                    { text: `Experience: ${data.experience} years` },
+                    { text: `Previous Jobs: ${data.jobs.join(', ')}` },
+                    { text: `Social Media Impact: ${data.social}` },
+                    { text: `Services: ${data.services.join(', ')}` }
+                ],
+                styles: {
+                    header: { fontSize: 18, bold: true }
+                }
+            };
+            pdfMake.createPdf(docDefinition).download("portfolio.pdf");
+        }
+    </script>
+</body>
+</html>
