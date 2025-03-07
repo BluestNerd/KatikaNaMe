@@ -1,21 +1,24 @@
+/* Importing Modern, Artistic Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&family=Montserrat:wght@400;700&display=swap');
+
 /* Global Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Raleway', sans-serif;
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: #0d0d0d;
+    background-color: #0a0213;
     color: #fff;
     text-align: center;
 }
 
 /* HEADER */
 header {
-    background: rgba(20, 20, 20, 0.9);
+    background: rgba(20, 20, 40, 0.9);
     padding: 15px 0;
     position: fixed;
     width: 100%;
@@ -36,7 +39,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #ff4081;
+    color: #a855f7; /* Neon Purple */
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
@@ -47,137 +50,164 @@ nav ul li a:hover {
     color: #ff79b0;
 }
 
-/* HERO SECTION */
+/* HERO SECTION - Modern Artistic Design */
 .hero {
-    height: 100vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), 
-                url('background-image.jpg') no-repeat center center/cover;
+    background: radial-gradient(circle, rgba(10, 2, 19, 1) 30%, rgba(40, 8, 73, 1) 80%);
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
+    position: relative;
     animation: fadeIn 1.5s ease-in-out;
+    overflow: hidden;
+}
+
+/* Floating Artistic Elements */
+.hero::before, .hero::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #a855f7, #ff4081);
+    border-radius: 50%;
+    opacity: 0.6;
+    filter: blur(100px);
+    animation: floating 6s infinite alternate ease-in-out;
+}
+
+.hero::before {
+    top: 10%;
+    left: -10%;
+}
+
+.hero::after {
+    bottom: 10%;
+    right: -10%;
+}
+
+@keyframes floating {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-20px);
+    }
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    text-transform: uppercase;
+    font-size: 3rem;
     font-weight: bold;
-    text-shadow: 2px 2px 10px rgba(255, 64, 129, 0.6);
+    text-shadow: 2px 2px 10px rgba(168, 85, 247, 0.6);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1.5px;
 }
 
 .hero p {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-top: 10px;
-    opacity: 0.8;
+    opacity: 0.9;
+    max-width: 600px;
+    line-height: 1.6;
 }
 
+/* CTA Button - Neon Effect */
 .cta-button {
-    background: #ff4081;
+    background: linear-gradient(135deg, #a855f7, #ff4081);
     color: white;
-    padding: 12px 25px;
+    padding: 14px 28px;
     margin-top: 20px;
     text-decoration: none;
     font-size: 1.2rem;
-    border-radius: 8px;
+    border-radius: 50px;
     font-weight: 600;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
 }
 
 .cta-button:hover {
-    background: #ff79b0;
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 64, 129, 0.6);
+    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
 }
 
 /* Portfolio Generator Page */
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
     padding: 60px 20px;
-    background: #1a1a1a;
-    margin-top: 80px;
+    background: rgba(40, 8, 73, 0.9);
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
+    box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3);
 }
 
 form input, form textarea {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+    padding: 12px;
+    margin-top: 8px;
     border: none;
-    border-radius: 5px;
-    background: #333;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
     color: #fff;
+    font-size: 16px;
+    transition: all 0.3s;
 }
 
+form input:focus, form textarea:focus {
+    background: rgba(255, 255, 255, 0.2);
+    outline: none;
+}
+
+/* Buttons */
 form button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-}
-
-.footer {
-    background: #0d0d0d;
-    padding: 20px;
-    margin-top: 50px;
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-
-.about-content, .contact-form-section {
-    padding: 30px 20px;
-}
-
-.container {
-    max-width: 800px;
-    margin: auto;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 30px;
-}
-
-.feature-box {
-    background: #1a1a1a;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.cta-button {
-    background: #ff4081;
+    background: linear-gradient(135deg, #ff4081, #a855f7);
     color: white;
-    padding: 12px 25px;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 8px;
-    display: inline-block;
+    transition: all 0.3s;
 }
 
-.contact-form-section input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 5px;
+form button:hover {
+    transform: scale(1.05);
 }
 
-.contact-form-section button {
-    width: 100%;
-    padding: 10px;
-    background: #ff4081;
-    border: none;
-    color: white;
-    font-weight: bold;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .container {
+        padding: 40px 15px;
+    }
+
+    .feature-box {
+        padding: 15px;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+        padding: 12px 22px;
+    }
 }
