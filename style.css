@@ -90,31 +90,88 @@ nav ul li a:hover {
 }
 
 /* About Section */
+/* ABOUT PAGE STYLING */
+.about-section {
+    width: 100%;
+    background: linear-gradient(to right, #250e40, #180a2a);
+    padding: 80px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .about-content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    gap: 30px;
-    text-align: left;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .about-text {
     flex: 1;
     min-width: 400px;
+    padding: 20px;
+    color: #e0c3fc;
+    text-align: left;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #a855f7;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    opacity: 0.9;
 }
 
 .about-image {
     flex: 1;
-    min-width: 300px;
+    min-width: 350px;
+    text-align: center;
 }
 
 .about-image img {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    width: 90%;
+    max-width: 450px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
 }
+
+/* Artistic Curve Effect */
+.about-section::after {
+    content: '';
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to bottom, #180a2a, transparent);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* Responsive Fixes */
+@media (max-width: 900px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .about-image img {
+        max-width: 350px;
+    }
+}
+
 
 /* Contact Section */
 .contact-form-section {
@@ -162,55 +219,103 @@ nav ul li a:hover {
     box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
 }
 
-/* Portfolio Generator Page */
-.portfolio-container {
-    max-width: 900px;
-    margin: auto;
-    padding: 50px 20px;
-    background: rgba(40, 8, 73, 0.9);
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3);
+/* PORTFOLIO GENERATOR PAGE */
+.portfolio-generator {
+    width: 100%;
+    background: linear-gradient(to right, #250e40, #180a2a);
+    padding: 80px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Form Styling */
+.generator-container {
+    max-width: 900px;
+    width: 100%;
+    background: rgba(26, 26, 26, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+}
+
+.generator-container h2 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #a855f7;
+}
+
+.generator-container form {
+    display: flex;
+    flex-direction: column;
+}
+
 form label {
-    display: block;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    margin: 10px 0 5px;
-    text-align: left;
     color: #e0c3fc;
+    margin-top: 15px;
+    display: block;
 }
 
 form input, form textarea, form select {
     width: 100%;
     padding: 12px;
+    margin-top: 5px;
     border: none;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
+    background: #333;
     color: #fff;
-    font-size: 16px;
-    transition: all 0.3s;
+    font-size: 1rem;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-form input:focus, form textarea:focus, form select:focus {
-    background: rgba(255, 255, 255, 0.2);
-    outline: none;
+form button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: #a855f7;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(168, 85, 247, 0.4);
 }
 
-/* Upload Image Styling */
-#profilePic {
-    display: block;
-    margin: 10px auto;
+form button:hover {
+    background: #c084fc;
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(168, 85, 247, 0.6);
 }
 
+/* Image Upload Preview */
 #profilePreview {
     display: block;
     margin: 10px auto;
-    max-width: 150px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    max-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(168, 85, 247, 0.5);
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .generator-container {
+        padding: 30px;
+    }
+
+    .generator-container h2 {
+        font-size: 2rem;
+    }
+
+    form label {
+        font-size: 1rem;
+    }
+}
+
 
 /* Footer */
 .footer {
