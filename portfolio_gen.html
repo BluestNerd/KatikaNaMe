@@ -10,7 +10,7 @@
 
     <header class="bg-gray-800 p-4 shadow-md">
         <nav class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold text-purple-400">KatikaNaMe</h1>
+            <h1 class="text-2xl font-bold text-purple-400">KatikaNaMe</h1>
             <ul class="flex space-x-6">
                 <li><a href="index.html" class="text-purple-300 hover:text-purple-500">Home</a></li>
                 <li><a href="portfolio_gen.html" class="text-purple-300 hover:text-purple-500">Dance Portfolio Generator</a></li>
@@ -19,73 +19,87 @@
             </ul>
         </nav>
     </header>
-    
-    <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold text-center text-purple-400">Dancer Portfolio Generator</h1>
-        
-        <form id="portfolioForm" class="bg-gray-800 p-6 rounded-lg shadow-lg mt-6">
-            <label class="block">Name:
-                <input type="text" id="name" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
 
-            <label class="block mt-4">Professional Title:
-                <input type="text" id="title" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
-            
-            <label class="block mt-4">Profile Picture URL:
-                <input type="text" id="profilePic" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
+    <div class="portfolio-generator flex items-center justify-center min-h-screen p-6">
+        <div class="generator-container w-full max-w-3xl bg-gray-800 p-8 rounded-lg shadow-2xl">
+            <h1 class="text-4xl font-bold text-center text-purple-400 mb-6">Dancer Portfolio Generator</h1>
 
-            <label class="block mt-4">About Me:
-                <textarea id="aboutMe" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
-            </label>
-            
-            <label class="block mt-4">Years of Experience:
-                <input type="number" id="experience" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
-            
-            <label class="block mt-4">Performance History (Previous Jobs):
-                <textarea id="jobs" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
-            </label>
-            
-            <label class="block mt-4">Notable Shows & Competitions:
-                <textarea id="shows" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
-            </label>
+            <form id="portfolioForm">
+                <label class="block mb-4">Name:
+                    <input type="text" id="name" class="input-field">
+                </label>
 
-            <label class="block mt-4">Social Media Impact:
-                <input type="text" id="social" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
+                <label class="block mb-4">Professional Title:
+                    <input type="text" id="title" class="input-field">
+                </label>
 
-            <label class="block mt-4">Services Offered:
-                <textarea id="services" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
-            </label>
+                <label class="block mb-4">Profile Picture URL:
+                    <input type="text" id="profilePic" class="input-field">
+                </label>
+                <img id="profilePreview" class="hidden mx-auto mt-3 w-32 h-32 rounded-lg shadow-lg">
 
-            <label class="block mt-4">Testimonials:
-                <textarea id="testimonials" class="w-full p-2 rounded mt-1 bg-gray-700 text-white"></textarea>
-            </label>
+                <label class="block mb-4">About Me:
+                    <textarea id="aboutMe" class="input-field h-28"></textarea>
+                </label>
 
-            <label class="block mt-4">Contact Email:
-                <input type="email" id="contactEmail" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
+                <label class="block mb-4">Years of Experience:
+                    <input type="number" id="experience" class="input-field">
+                </label>
 
-            <label class="block mt-4">Phone Number:
-                <input type="text" id="phone" class="w-full p-2 rounded mt-1 bg-gray-700 text-white">
-            </label>
-            
-            <button type="button" onclick="saveToYaml()" class="mt-4 w-full bg-blue-500 hover:bg-blue-600 p-3 rounded">Save Portfolio</button>
-            <button type="button" onclick="loadFromYaml()" class="mt-4 w-full bg-yellow-500 hover:bg-yellow-600 p-3 rounded">Load Portfolio</button>
-            <button type="button" onclick="generatePortfolio()" class="mt-4 w-full bg-purple-500 hover:bg-purple-600 p-3 rounded">Generate Portfolio</button>
-        </form>
+                <label class="block mb-4">Performance History (Previous Jobs):
+                    <textarea id="jobs" class="input-field h-24"></textarea>
+                </label>
 
-        <h2 class="text-2xl font-bold text-purple-400 mt-6">Generated Portfolio:</h2>
-        <div id="preview" class="bg-gray-800 p-6 rounded-lg shadow-lg mt-4"></div>
+                <label class="block mb-4">Notable Shows & Competitions:
+                    <textarea id="shows" class="input-field h-24"></textarea>
+                </label>
 
-        <button id="downloadPdfBtn" class="hidden mt-4 bg-green-500 hover:bg-green-600 p-3 rounded">Download PDF</button>
+                <label class="block mb-4">Social Media Impact:
+                    <input type="text" id="social" class="input-field">
+                </label>
+
+                <label class="block mb-4">Services Offered:
+                    <textarea id="services" class="input-field h-24"></textarea>
+                </label>
+
+                <label class="block mb-4">Testimonials:
+                    <textarea id="testimonials" class="input-field h-24"></textarea>
+                </label>
+
+                <label class="block mb-4">Contact Email:
+                    <input type="email" id="contactEmail" class="input-field">
+                </label>
+
+                <label class="block mb-4">Phone Number:
+                    <input type="text" id="phone" class="input-field">
+                </label>
+
+                <div class="flex flex-col gap-4 mt-6">
+                    <button type="button" onclick="saveToYaml()" class="btn bg-blue-500 hover:bg-blue-600">Save Portfolio</button>
+                    <button type="button" onclick="loadFromYaml()" class="btn bg-yellow-500 hover:bg-yellow-600">Load Portfolio</button>
+                    <button type="button" onclick="generatePortfolio()" class="btn bg-purple-500 hover:bg-purple-600">Generate Portfolio</button>
+                </div>
+            </form>
+        </div>
     </div>
+
+    <h2 class="text-2xl font-bold text-purple-400 text-center mt-10">Generated Portfolio:</h2>
+    <div id="preview" class="container mx-auto bg-gray-800 p-6 rounded-lg shadow-lg mt-4"></div>
+
+    <button id="downloadPdfBtn" class="hidden mt-4 mx-auto block bg-green-500 hover:bg-green-600 p-3 rounded">Download PDF</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.70/vfs_fonts.js"></script>
     <script src="script.js"></script>
+
+    <script>
+        // Profile Picture Preview
+        document.getElementById('profilePic').addEventListener('input', function () {
+            let img = document.getElementById('profilePreview');
+            img.src = this.value;
+            img.classList.remove('hidden');
+        });
+    </script>
 </body>
 </html>
