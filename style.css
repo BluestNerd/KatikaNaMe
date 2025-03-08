@@ -66,29 +66,26 @@ body {
     text-shadow: 0 0 10px #ff00ff;
 }
 
-/* Form Styles */
-fieldset {
-    border: 2px solid #ff00ff;
-    border-radius: 8px;
-    padding: 15px;
+.page-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
     margin: 20px 0;
-    box-shadow: 0 0 10px #ff00ff;
 }
 
-legend {
+/* Form Styles */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.contact-form label {
     font-weight: 600;
-    font-size: 1.2rem;
     color: #ff00ff;
 }
 
-label {
-    display: block;
-    margin: 10px 0;
-    font-weight: 400;
-}
-
-/* Input Fields */
-input, textarea {
+.contact-form input, .contact-form textarea {
     width: 100%;
     padding: 8px;
     background: #2e0032;
@@ -100,7 +97,7 @@ input, textarea {
     outline: none;
 }
 
-input:focus, textarea:focus {
+.contact-form input:focus, .contact-form textarea:focus {
     border-color: #00ffff;
     box-shadow: 0 0 8px #00ffff;
 }
@@ -127,16 +124,6 @@ input:focus, textarea:focus {
     transform: scale(1.05);
 }
 
-/* Portfolio Preview */
-.preview-container {
-    border: 2px solid #ff00ff;
-    padding: 20px;
-    box-shadow: 0px 0px 10px #ff00ff;
-    border-radius: 8px;
-    background: #2e0032;
-    color: #ffffff;
-}
-
 /* Footer */
 .footer {
     background: #800080;
@@ -144,4 +131,3 @@ input:focus, textarea:focus {
     color: #fff;
     box-shadow: 0 0 10px #ff00ff;
 }
-
