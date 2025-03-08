@@ -14,7 +14,8 @@ function saveToYaml() {
         services: document.getElementById('services').value.split('\n'),
         testimonials: document.getElementById('testimonials').value,
         contactEmail: document.getElementById('contactEmail').value,
-        phone: document.getElementById('phone').value
+        phone: document.getElementById('phone').value,
+        profilePic: document.getElementById('profilePreview').src
     };
     localStorage.setItem('portfolioData', jsyaml.dump(data));
     alert("Portfolio saved!");
@@ -34,11 +35,29 @@ function loadFromYaml() {
         document.getElementById('testimonials').value = data.testimonials || "";
         document.getElementById('contactEmail').value = data.contactEmail || "";
         document.getElementById('phone').value = data.phone || "";
+        
+        if (data.profilePic) {
+            document.getElementById('profilePreview').src = data.profilePic;
+            document.getElementById('profilePreview').style.display = "block";
+        }
+
         alert("Portfolio loaded!");
     } else {
         alert("No saved portfolio found.");
     }
 }
+
+document.getElementById('profilePic').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('profilePreview').src = e.target.result;
+            document.getElementById('profilePreview').style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    }
+});
 
 function generatePortfolio() {
     const yamlData = localStorage.getItem('portfolioData');
@@ -47,6 +66,7 @@ function generatePortfolio() {
         return;
     }
     const data = jsyaml.load(yamlData);
+    
     const preview = `
         <div class='p-4 border border-purple-500 rounded'>
             <h3 class='text-xl font-bold'>${data.name}</h3>
@@ -58,6 +78,7 @@ function generatePortfolio() {
             <p><strong>Services:</strong> ${data.services.join(', ')}</p>
             <p><strong>Testimonials:</strong> ${data.testimonials}</p>
             <p><strong>Contact:</strong> ${data.contactEmail} | ${data.phone}</p>
+            ${data.profilePic ? `<img src="${data.profilePic}" class="w-32 h-32 rounded-full mt-2" />` : ''}
         </div>
     `;
     document.getElementById('preview').innerHTML = preview;
@@ -67,25 +88,50 @@ function generatePortfolio() {
 function downloadPdf() {
     const yamlData = localStorage.getItem('portfolioData');
     if (!yamlData) {
-        alert("No saved data to generate PDF.");
+        alert("No portfolio data available for download.");
         return;
     }
     const data = jsyaml.load(yamlData);
+
     const docDefinition = {
         content: [
             { text: data.name, style: 'header' },
-            { text: `Title: ${data.title}` },
+            { text: `Title: ${data.title}`, style: 'subheader' },
             { text: `Experience: ${data.experience} years` },
             { text: `About Me: ${data.aboutMe}` },
             { text: `Performance History: ${data.jobs.join(', ')}` },
             { text: `Social Media Impact: ${data.social}` },
             { text: `Services: ${data.services.join(', ')}` },
             { text: `Testimonials: ${data.testimonials}` },
-            { text: `Contact: ${data.contactEmail} | ${data.phone}` }
+            { text: `Contact: ${data.contactEmail} | ${data.phone}` },
         ],
         styles: {
-            header: { fontSize: 18, bold: true }
+            header: { fontSize: 22, bold: true },
+            subheader: { fontSize: 18, bold: true }
         }
     };
-    pdfMake.createPdf(docDefinition).download("portfolio.pdf");
+
+    if (data.profilePic) {
+        convertImgToBase64(data.profilePic, function(base64Img) {
+            docDefinition.content.splice(1, 0, { image: base64Img, width: 150 });
+            pdfMake.createPdf(docDefinition).download("portfolio.pdf");
+        });
+    } else {
+        pdfMake.createPdf(docDefinition).download("portfolio.pdf");
+    }
+}
+
+function convertImgToBase64(url, callback) {
+    var img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.src = url;
+    img.onload = function() {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var dataURL = canvas.toDataURL("image/png");
+        callback(dataURL);
+    };
 }
