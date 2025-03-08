@@ -6,16 +6,22 @@ function downloadPdf() {
         alert("No portfolio data available for download.");
         return;
     }
+
     const data = jsyaml.load(yamlData);
+
+    // Ensure all properties exist and are arrays if needed
+    data.skills = Array.isArray(data.skills) ? data.skills : [];
+    data.jobs = Array.isArray(data.jobs) ? data.jobs : [];
+    data.services = Array.isArray(data.services) ? data.services : [];
 
     const docDefinition = {
         content: [
-            { text: data.name, style: 'header', alignment: 'center' },
-            { text: data.title, style: 'subheader', alignment: 'center', margin: [0, 0, 0, 10] },
-            { text: `Experience: ${data.experience} years`, style: 'body' },
+            { text: data.name || "No Name Provided", style: 'header', alignment: 'center' },
+            { text: data.title || "No Title Provided", style: 'subheader', alignment: 'center', margin: [0, 0, 0, 10] },
+            { text: `Experience: ${data.experience || "N/A"} years`, style: 'body' },
 
             { text: 'About Me', style: 'sectionHeader' },
-            { text: data.aboutMe, style: 'body' },
+            { text: data.aboutMe || "No about me section provided", style: 'body' },
 
             { text: 'Skills', style: 'sectionHeader' },
             { ul: data.skills.length > 0 ? data.skills : ["No skills provided"], margin: [0, 5, 0, 10] },
@@ -24,7 +30,7 @@ function downloadPdf() {
             { ul: data.jobs.length > 0 ? data.jobs : ["No performance history available"], margin: [0, 5, 0, 10] },
 
             { text: 'Social Media Impact', style: 'sectionHeader' },
-            { text: data.social, style: 'body' },
+            { text: data.social || "No social media impact data provided", style: 'body' },
 
             { text: 'Services Offered', style: 'sectionHeader' },
             { ul: data.services.length > 0 ? data.services : ["No services listed"], margin: [0, 5, 0, 10] },
@@ -33,8 +39,8 @@ function downloadPdf() {
             { text: data.testimonials || "No testimonials available", style: 'body' },
 
             { text: 'Contact Information', style: 'sectionHeader' },
-            { text: `Email: ${data.contactEmail}`, style: 'body' },
-            { text: `Phone: ${data.phone}`, style: 'body' },
+            { text: `Email: ${data.contactEmail || "No email provided"}`, style: 'body' },
+            { text: `Phone: ${data.phone || "No phone number provided"}`, style: 'body' },
         ],
         styles: {
             header: { fontSize: 24, bold: true, margin: [0, 0, 0, 10] },
