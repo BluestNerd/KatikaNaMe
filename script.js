@@ -1,50 +1,5 @@
 document.getElementById("downloadPdfBtn").addEventListener("click", downloadPdf);
 
-function saveToYaml() {
-    const data = {
-        name: document.getElementById('name').value,
-        title: document.getElementById('title').value,
-        experience: document.getElementById('experience').value,
-        aboutMe: document.getElementById('aboutMe').value,
-        jobs: document.getElementById('jobs').value.split('\n'),
-        social: document.getElementById('social').value,
-        services: document.getElementById('services').value.split('\n'),
-        testimonials: document.getElementById('testimonials').value,
-        contactEmail: document.getElementById('contactEmail').value,
-        phone: document.getElementById('phone').value,
-        skills: document.getElementById('skills').value.split(',').map(s => s.trim()), // Convert to array
-        profilePic: document.getElementById('profilePreview').src
-    };
-    localStorage.setItem('portfolioData', jsyaml.dump(data));
-    alert("Portfolio saved!");
-}
-
-function loadFromYaml() {
-    const yamlData = localStorage.getItem('portfolioData');
-    if (yamlData) {
-        const data = jsyaml.load(yamlData);
-        document.getElementById('name').value = data.name || "";
-        document.getElementById('title').value = data.title || "";
-        document.getElementById('experience').value = data.experience || "";
-        document.getElementById('aboutMe').value = data.aboutMe || "";
-        document.getElementById('jobs').value = (data.jobs || []).join('\n');
-        document.getElementById('social').value = data.social || "";
-        document.getElementById('services').value = (data.services || []).join('\n');
-        document.getElementById('testimonials').value = data.testimonials || "";
-        document.getElementById('contactEmail').value = data.contactEmail || "";
-        document.getElementById('phone').value = data.phone || "";
-        document.getElementById('skills').value = (data.skills || []).join(', '); 
-
-        if (data.profilePic) {
-            document.getElementById('profilePreview').src = data.profilePic;
-            document.getElementById('profilePreview').style.display = "block";
-        }
-        alert("Portfolio loaded!");
-    } else {
-        alert("No saved portfolio found.");
-    }
-}
-
 function downloadPdf() {
     const yamlData = localStorage.getItem('portfolioData');
     if (!yamlData) {
@@ -89,9 +44,28 @@ function downloadPdf() {
         }
     };
 
-    if (data.profilePic) {
+    // Handle profile picture
+    if (data.profilePic && data.profilePic.startsWith("data:image")) {
+        docDefinition.content.splice(2, 0, {
+            image: data.profilePic,
+            width: 150,
+            alignment: 'center',
+            margin: [0, 0, 0, 10]
+        });
+        pdfMake.createPdf(docDefinition).download("portfolio.pdf");
+    } else if (data.profilePic) {
+        // Convert URL-based image to Base64
         convertImgToBase64(data.profilePic, function(base64Img) {
-            docDefinition.content.splice(2, 0, { image: base64Img, width: 150, alignment: 'center', margin: [0, 0, 0, 10] });
+            docDefinition.content.splice(2, 0, {
+                image: base64Img,
+                width: 150,
+                alignment: 'center',
+                margin: [0, 0, 0, 10]
+            });
+            pdfMake.createPdf(docDefinition).download("portfolio.pdf");
+        }, function(error) {
+            console.error("Image conversion failed:", error);
+            alert("Failed to load image for the PDF, proceeding without image.");
             pdfMake.createPdf(docDefinition).download("portfolio.pdf");
         });
     } else {
@@ -99,7 +73,8 @@ function downloadPdf() {
     }
 }
 
-function convertImgToBase64(url, callback) {
+// Function to convert an image URL to Base64
+function convertImgToBase64(url, callback, errorCallback) {
     var img = new Image();
     img.crossOrigin = "Anonymous";
     img.src = url;
@@ -111,5 +86,8 @@ function convertImgToBase64(url, callback) {
         ctx.drawImage(img, 0, 0);
         var dataURL = canvas.toDataURL("image/png");
         callback(dataURL);
+    };
+    img.onerror = function() {
+        errorCallback("Failed to load image.");
     };
 }
