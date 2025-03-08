@@ -1,6 +1,3 @@
-document.getElementById("saveBtn").addEventListener("click", saveToYaml);
-document.getElementById("loadBtn").addEventListener("click", loadFromYaml);
-document.getElementById("generateBtn").addEventListener("click", generatePortfolio);
 document.getElementById("downloadPdfBtn").addEventListener("click", downloadPdf);
 
 function saveToYaml() {
@@ -15,6 +12,7 @@ function saveToYaml() {
         testimonials: document.getElementById('testimonials').value,
         contactEmail: document.getElementById('contactEmail').value,
         phone: document.getElementById('phone').value,
+        skills: document.getElementById('skills').value.split(',').map(s => s.trim()), // Convert to array
         profilePic: document.getElementById('profilePreview').src
     };
     localStorage.setItem('portfolioData', jsyaml.dump(data));
@@ -35,54 +33,16 @@ function loadFromYaml() {
         document.getElementById('testimonials').value = data.testimonials || "";
         document.getElementById('contactEmail').value = data.contactEmail || "";
         document.getElementById('phone').value = data.phone || "";
-        
+        document.getElementById('skills').value = (data.skills || []).join(', '); 
+
         if (data.profilePic) {
             document.getElementById('profilePreview').src = data.profilePic;
             document.getElementById('profilePreview').style.display = "block";
         }
-
         alert("Portfolio loaded!");
     } else {
         alert("No saved portfolio found.");
     }
-}
-
-document.getElementById('profilePic').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('profilePreview').src = e.target.result;
-            document.getElementById('profilePreview').style.display = "block";
-        };
-        reader.readAsDataURL(file);
-    }
-});
-
-function generatePortfolio() {
-    const yamlData = localStorage.getItem('portfolioData');
-    if (!yamlData) {
-        alert("No saved data to generate portfolio.");
-        return;
-    }
-    const data = jsyaml.load(yamlData);
-    
-    const preview = `
-        <div class='p-4 border border-purple-500 rounded'>
-            <h3 class='text-xl font-bold'>${data.name}</h3>
-            <p><strong>Title:</strong> ${data.title}</p>
-            <p><strong>Experience:</strong> ${data.experience} years</p>
-            <p><strong>About Me:</strong> ${data.aboutMe}</p>
-            <p><strong>Performance History:</strong> ${data.jobs.join(', ')}</p>
-            <p><strong>Social Media Impact:</strong> ${data.social}</p>
-            <p><strong>Services:</strong> ${data.services.join(', ')}</p>
-            <p><strong>Testimonials:</strong> ${data.testimonials}</p>
-            <p><strong>Contact:</strong> ${data.contactEmail} | ${data.phone}</p>
-            ${data.profilePic ? `<img src="${data.profilePic}" class="w-32 h-32 rounded-full mt-2" />` : ''}
-        </div>
-    `;
-    document.getElementById('preview').innerHTML = preview;
-    document.getElementById('downloadPdfBtn').classList.remove('hidden');
 }
 
 function downloadPdf() {
@@ -95,25 +55,43 @@ function downloadPdf() {
 
     const docDefinition = {
         content: [
-            { text: data.name, style: 'header' },
-            { text: `Title: ${data.title}`, style: 'subheader' },
-            { text: `Experience: ${data.experience} years` },
-            { text: `About Me: ${data.aboutMe}` },
-            { text: `Performance History: ${data.jobs.join(', ')}` },
-            { text: `Social Media Impact: ${data.social}` },
-            { text: `Services: ${data.services.join(', ')}` },
-            { text: `Testimonials: ${data.testimonials}` },
-            { text: `Contact: ${data.contactEmail} | ${data.phone}` },
+            { text: data.name, style: 'header', alignment: 'center' },
+            { text: data.title, style: 'subheader', alignment: 'center', margin: [0, 0, 0, 10] },
+            { text: `Experience: ${data.experience} years`, style: 'body' },
+
+            { text: 'About Me', style: 'sectionHeader' },
+            { text: data.aboutMe, style: 'body' },
+
+            { text: 'Skills', style: 'sectionHeader' },
+            { ul: data.skills.length > 0 ? data.skills : ["No skills provided"], margin: [0, 5, 0, 10] },
+
+            { text: 'Performance History', style: 'sectionHeader' },
+            { ul: data.jobs.length > 0 ? data.jobs : ["No performance history available"], margin: [0, 5, 0, 10] },
+
+            { text: 'Social Media Impact', style: 'sectionHeader' },
+            { text: data.social, style: 'body' },
+
+            { text: 'Services Offered', style: 'sectionHeader' },
+            { ul: data.services.length > 0 ? data.services : ["No services listed"], margin: [0, 5, 0, 10] },
+
+            { text: 'Testimonials', style: 'sectionHeader' },
+            { text: data.testimonials || "No testimonials available", style: 'body' },
+
+            { text: 'Contact Information', style: 'sectionHeader' },
+            { text: `Email: ${data.contactEmail}`, style: 'body' },
+            { text: `Phone: ${data.phone}`, style: 'body' },
         ],
         styles: {
-            header: { fontSize: 22, bold: true },
-            subheader: { fontSize: 18, bold: true }
+            header: { fontSize: 24, bold: true, margin: [0, 0, 0, 10] },
+            subheader: { fontSize: 18, italics: true, margin: [0, 0, 0, 10] },
+            sectionHeader: { fontSize: 16, bold: true, decoration: 'underline', margin: [0, 10, 0, 5] },
+            body: { fontSize: 12, margin: [0, 0, 0, 5] },
         }
     };
 
     if (data.profilePic) {
         convertImgToBase64(data.profilePic, function(base64Img) {
-            docDefinition.content.splice(1, 0, { image: base64Img, width: 150 });
+            docDefinition.content.splice(2, 0, { image: base64Img, width: 150, alignment: 'center', margin: [0, 0, 0, 10] });
             pdfMake.createPdf(docDefinition).download("portfolio.pdf");
         });
     } else {
