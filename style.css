@@ -145,3 +145,58 @@ body {
     margin: 0;
     font-size: 0.9rem;
 }
+
+/* About Page Styles */
+.about-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 40px 0;
+}
+
+.about-features {
+    list-style: none;
+    padding: 0;
+}
+
+.about-features li {
+    margin: 15px 0;
+    font-size: 1.1rem;
+    color: #4a4a4a;
+}
+
+.about-features strong {
+    color: #6a11cb; /* Purple accent for emphasis */
+}
+
+.cta-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.cta-text {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.cta-link {
+    color: #6a11cb;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.cta-link:hover {
+    color: #2575fc; /* Blue accent for hover */
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #2575fc, #6a11cb); /* Blue to purple gradient */
+    margin-left: 10px;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Reverse gradient on hover */
+}
