@@ -1,80 +1,92 @@
-<!-- Portfolio Generator Page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dancer Portfolio Generator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>KatikaNaMe - Web Portfolio Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>KatikaNaMe - Dancer Portfolio Generator</h1>
+    <header class="header">
+        <nav class="nav-container">
+            <h1 class="logo">KatikaNaMe</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio_gen.html">Dance Portfolio Generator</a></li>
+                <li><a href="web_portfolio_gen.html">Web Portfolio Generator</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main>
-        <form id="portfolioForm">
+    <main class="main-container">
+        <h1 class="page-title">Web Portfolio Generator</h1>
+        <p class="page-description">
+            Create a live, updatable website for your dance portfolio in minutes. 
+            No coding required—just fill in your details, choose a template, and let KatikaNaMe do the rest!
+        </p>
+
+        <form id="webPortfolioForm">
             <fieldset>
                 <legend>Personal Information</legend>
-                <label>Name: <input type="text" id="name"></label>
-                <label>Professional Title: <input type="text" id="title"></label>
-                <label>Profile Picture: <input type="file" id="profilePic" accept="image/jpeg"></label>
-                <img id="profilePreview" src="" alt="Profile Preview" style="max-width: 150px; display: none; margin-top: 10px;">
-                <input type="hidden" id="profilePicBase64">
+                <label>Name: <input type="text" id="name" required></label>
+                <label>Professional Title: <input type="text" id="title" required></label>
+                <label>Profile Picture: <input type="file" id="profilePic" accept="image/*" required></label>
+                <img id="profilePreview" style="max-width: 150px; display: none; margin-top: 10px;">
             </fieldset>
 
             <fieldset>
                 <legend>Portfolio Details</legend>
-                <label>About Me: <textarea id="aboutMe"></textarea></label>
-                <label>Performance History: <textarea id="jobs"></textarea></label>
-                <label>Social Media Impact: <input type="text" id="social"></label>
-                <label>Services Offered: <textarea id="services"></textarea></label>
+                <label>About Me: <textarea id="aboutMe" required></textarea></label>
+                <label>Performance History: <textarea id="jobs" required></textarea></label>
+                <label>Social Media Links: <input type="text" id="social" placeholder="e.g., Instagram, YouTube"></label>
+                <label>Services Offered: <textarea id="services" required></textarea></label>
                 <label>Testimonials: <textarea id="testimonials"></textarea></label>
             </fieldset>
 
             <fieldset>
-                <legend>Contact Information</legend>
-                <label>Contact Email: <input type="email" id="contactEmail"></label>
-                <label>Phone Number: <input type="text" id="phone"></label>
+                <legend>Skills</legend>
+                <label>Dance Styles (comma-separated): <input type="text" id="skills" required></label>
             </fieldset>
 
             <fieldset>
-                <legend>Customization</legend>
-                <label>Primary Color:
-                    <select id="primaryColor">
-                        <option value="#ff4081">Pink</option>
-                        <option value="#007bff">Blue</option>
-                        <option value="#28a745">Green</option>
-                        <option value="#ffcc00">Yellow</option>
+                <legend>Website Customization</legend>
+                <label>Choose a Template:
+                    <select id="template">
+                        <option value="template1">Template 1 - Modern</option>
+                        <option value="template2">Template 2 - Classic</option>
+                        <option value="template3">Template 3 - Artistic</option>
                     </select>
                 </label>
-                <label>Secondary Color:
-                    <select id="secondaryColor">
-                        <option value="#ffffff">White</option>
-                        <option value="#f8f9fa">Light Gray</option>
-                        <option value="#343a40">Dark Gray</option>
-                        <option value="#000000">Black</option>
-                    </select>
-                </label>
+                <label>Custom Domain (optional): <input type="text" id="domain" placeholder="e.g., yourname.com"></label>
             </fieldset>
 
-            <button type="button" onclick="generatePortfolio()">Generate Web Portfolio</button>
+            <button type="submit" class="btn">Generate Web Portfolio</button>
         </form>
+
+        <div id="previewSection" class="hidden">
+            <h2 class="section-title">Your Portfolio Preview</h2>
+            <iframe id="portfolioPreview" width="100%" height="500px" style="border: 1px solid #ddd;"></iframe>
+            <button id="publishBtn" class="btn">Publish Portfolio</button>
+        </div>
     </main>
 
-    <script src="script2.js"></script>
+    <footer class="footer">
+        <p>&copy; 2025 KatikaNaMe. All rights reserved.</p>
+    </footer>
+
     <script>
-        document.getElementById('profilePic').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('profilePreview').src = e.target.result;
-                    document.getElementById('profilePreview').style.display = 'block';
-                    document.getElementById('profilePicBase64').value = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
+        document.getElementById('webPortfolioForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Generate preview (simulated for now)
+            document.getElementById('previewSection').classList.remove('hidden');
+            document.getElementById('portfolioPreview').src = 'template-preview.html'; // Replace with dynamic preview
+        });
+
+        document.getElementById('publishBtn').addEventListener('click', function () {
+            alert('Your portfolio website has been published!');
+            // Backend logic to publish the website
         });
     </script>
 </body>
