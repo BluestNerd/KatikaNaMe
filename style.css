@@ -200,3 +200,24 @@ body {
 .btn-secondary:hover {
     background: linear-gradient(135deg, #6a11cb, #2575fc); /* Reverse gradient on hover */
 }
+
+/* Web Portfolio Generator Styles */
+#webPortfolioForm {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#previewSection {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#portfolioPreview {
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
