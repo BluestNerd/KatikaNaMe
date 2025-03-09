@@ -221,3 +221,190 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* Fun and Elegant Styles */
+body {
+    background-color: #f9f5ff; /* Soft lavender background */
+    color: #4a4a4a; /* Dark gray for text */
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Vibrant purple to blue gradient */
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffd700; /* Gold accent for hover */
+}
+
+/* Main Content */
+.main-container {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #2c3e50; /* Deep blue for titles */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.page-description {
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Sections with Gradients and Icons */
+.section {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 40px 0;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #6a11cb; /* Purple accent */
+    margin-bottom: 20px;
+}
+
+.section-icon {
+    font-size: 2rem;
+    color: #2575fc; /* Blue accent */
+    margin-bottom: 10px;
+}
+
+/* Carousel */
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: 300px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-item h3 {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin: 10px;
+}
+
+.carousel-item p {
+    font-size: 1rem;
+    color: #666;
+    margin: 10px;
+}
+
+/* Calendar/Events Table */
+.events-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.events-table th, .events-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.events-table th {
+    background: #6a11cb;
+    color: #fff;
+}
+
+.events-table tr:hover {
+    background: #f9f5ff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animated {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.footer {
+    background: #2c3e50;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
