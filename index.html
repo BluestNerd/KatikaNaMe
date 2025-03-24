@@ -1,37 +1,198 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KatikaNaMe - Home</title>
-    <link rel="stylesheet" href="style.css">
+    <title>KatikaNaMe | African Dance Portfolio Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav-container">
-            <h1 class="logo">KatikaNaMe</h1>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <span>Katika</span><span class="highlight">NaMe</span>
+            </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="portfolio_gen.html">Dance Portfolio Generator</a></li>
-                <li><a href="web_portfolio_gen.html">Web Portfolio Generator</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="portfolio_gen.html">Portfolio Generator</a></li>
+                <li><a href="web_gen.html">Web Portfolio</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="portfolio_gen.html" class="btn primary">Get Started</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <main class="main-container">
-        <h1 class="page-title">Welcome to KatikaNaMe</h1>
-        <p class="page-description">
-            KatikaNaMe is your go-to platform for dancers and performance artists in Kenya. 
-            Discover, create, and share your art with the world in a professional way. 
-            Whether you're a professional or just starting out, we’ve got you covered.
-        </p>
-        <a href="portfolio_gen.html" class="btn">Create Your Portfolio</a>
-    </main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                <span class="title-line">Showcase Your</span>
+                <span class="title-line highlight">African Dance</span>
+            </h1>
+            <p class="subtitle">Create stunning digital portfolios in minutes. No design skills needed.</p>
+            <div class="cta-buttons">
+                <a href="portfolio_gen.html" class="btn primary">Generate Portfolio <i class="fas fa-arrow-right"></i></a>
+                <a href="web_gen.html" class="btn secondary">See Examples</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="image-container">
+                <img src="afro_dancer.png" alt="African dancer silhouette">
+                <div class="image-overlay"></div>
+            </div>
+        </div>
+    </section>
 
-    <footer class="footer">
-        <p>&copy; 2025 KatikaNaMe. All rights reserved.</p>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-header">
+            <span class="section-label">Why Choose Us</span>
+            <h2>Made for <span class="highlight">African Dancers</span>, By Dancers</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-magic"></i>
+                </div>
+                <h3>One-Click Design</h3>
+                <p>Beautiful African-inspired templates that adapt to your style automatically.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile Ready</h3>
+                <p>Looks perfect on any device, from phones to desktops.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Generate and publish your portfolio in under 5 minutes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Generator Preview -->
+    <section class="generator-preview">
+        <div class="preview-content">
+            <div class="section-header">
+                <span class="section-label">How It Works</span>
+                <h2>Your Perfect Portfolio <span class="highlight">In 3 Steps</span></h2>
+            </div>
+            <ol class="steps">
+                <li>
+                    <span class="step-number">1</span>
+                    <div class="step-content">
+                        <h3>Fill Your Details</h3>
+                        <p>Add your dance experience, skills, and media.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="step-number">2</span>
+                    <div class="step-content">
+                        <h3>Choose Your Style</h3>
+                        <p>Select from our African-inspired designer templates.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="step-number">3</span>
+                    <div class="step-content">
+                        <h3>Publish & Share</h3>
+                        <p>Get a live link to share with the world.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+        <div class="preview-image">
+            <div class="mockup">
+                <img src="example.png" alt="Portfolio preview">
+                <div class="mockup-overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span>Katika</span><span class="highlight">NaMe</span>
+                </div>
+                <p>Empowering African dancers to showcase their talent worldwide.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Product</h4>
+                    <a href="portfolio_gen.html">Portfolio Generator</a>
+                    <a href="web_portfolio_gen.html">Web Portfolio</a>
+                    <a href="#">Templates</a>
+                </div>
+                <div class="link-group">
+                    <h4>Company</h4>
+                    <a href="about.html">About</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Careers</a>
+                </div>
+                <div class="link-group">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#">Privacy</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 KatikaNaMe. All rights reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+            themeToggle.innerHTML = html.dataset.theme === 'dark' ? 
+                '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
