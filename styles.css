@@ -1060,3 +1060,128 @@ footer {
                 grid-template-columns: 1fr;
             }
         }
+/* Contracts Page Specific Styles */
+.contract-section {
+  margin-bottom: 3rem;
+}
+
+.tool-card, .info-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  border: 1px solid rgba(185, 179, 181, 0.1);
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.tool-card:hover, .info-card:hover {
+  border-color: var(--neon-purple);
+  box-shadow: 0 10px 20px rgba(176, 38, 255, 0.1);
+}
+
+.styled-select {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(185, 179, 181, 0.05);
+  border: 1px solid rgba(185, 179, 181, 0.2);
+  border-radius: var(--border-radius);
+  color: var(--text-light);
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.styled-select:focus {
+  outline: none;
+  border-color: var(--neon-purple);
+  box-shadow: 0 0 0 3px rgba(176, 38, 255, 0.1);
+}
+
+.suggestions-container {
+  margin-top: 1.5rem;
+}
+
+.suggestion-box {
+  background-color: var(--darker-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  border-left: 4px solid var(--neon-purple);
+}
+
+.suggestion-box h4 {
+  color: var(--neon-purple);
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.styled-list {
+  list-style-type: none;
+  margin: 1rem 0;
+}
+
+.styled-list li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.styled-list li:before {
+  content: '•';
+  color: var(--neon-purple);
+  position: absolute;
+  left: 0;
+}
+
+.warning-box {
+  background-color: rgba(176, 38, 255, 0.1);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.warning-box i {
+  color: var(--neon-purple);
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.resource-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(185, 179, 181, 0.1);
+  text-decoration: none;
+  color: var(--text-light);
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--neon-purple);
+  box-shadow: 0 10px 20px rgba(176, 38, 255, 0.1);
+}
+
+.resource-card h3 {
+  color: var(--neon-purple);
+  margin-bottom: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.resource-card p {
+  color: var(--silver);
+  font-size: 0.9rem;
+}
+
+.subtitle {
+  color: var(--silver);
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
