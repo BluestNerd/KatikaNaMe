@@ -714,3 +714,220 @@ textarea:focus {
         display: none;
     }
 }
+/* ======================== */
+/* === PORTFOLIO GENERATOR == */
+/* ======================== */
+
+.main-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.page-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    background: linear-gradient(90deg, var(--neon-purple), var(--neon-purple-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+#portfolioForm {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border: 1px solid rgba(185, 179, 181, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    border: 1px solid rgba(176, 38, 255, 0.3);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+legend {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--neon-purple);
+    padding: 0 1rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+label > input,
+label > textarea {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    background-color: rgba(185, 179, 181, 0.05);
+    border: 1px solid rgba(185, 179, 181, 0.2);
+    border-radius: var(--border-radius);
+    color: var(--text-light);
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+label > input:focus,
+label > textarea:focus {
+    outline: none;
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 0 3px rgba(176, 38, 255, 0.1);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#profilePreview {
+    border-radius: 50%;
+    border: 3px solid var(--neon-purple);
+    display: block;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary {
+    background-color: var(--neon-purple);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--neon-purple-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(176, 38, 255, 0.4);
+}
+
+.section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    margin: 3rem 0 1.5rem;
+    color: var(--text-light);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    bottom: -8px;
+    left: 0;
+    background: var(--neon-purple);
+}
+
+.preview-container {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border: 1px solid rgba(185, 179, 181, 0.1);
+    margin-bottom: 2rem;
+}
+
+#preview {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+}
+
+#preview h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--neon-purple);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+#preview p {
+    margin-bottom: 0.8rem;
+}
+
+#preview strong {
+    color: var(--neon-purple);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    #portfolioForm {
+        padding: 1.5rem;
+    }
+    
+    fieldset {
+        padding: 1rem;
+    }
+    
+    .form-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+/* File Input Styling */
+input[type="file"] {
+    display: none;
+}
+
+.file-input-label {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: rgba(176, 38, 255, 0.1);
+    color: var(--neon-purple);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    text-align: center;
+    border: 1px dashed var(--neon-purple);
+}
+
+.file-input-label:hover {
+    background-color: rgba(176, 38, 255, 0.2);
+}
+
+/* Add this to your HTML for the file input */
+/* 
+<label>
+    Profile Picture: 
+    <label for="profilePic" class="file-input-label">Choose File</label>
+    <input type="file" id="profilePic" accept="image/*">
+</label>
+*/
