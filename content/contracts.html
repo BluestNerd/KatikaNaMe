@@ -11,21 +11,34 @@
 <body>
 
     <!-- Header -->
-    <header>
+   <header>
         <nav>
             <div class="logo">
                 <span>Katika</span><span class="highlight">NaMe</span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" >Home</a></li>
-                <li><a href="portfolio_gen.html">Portfolio Generator</a></li>
-                <li><a href="web_gen.html">Web Portfolio</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contracts.html" class="active">Contracts</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="content/index.html" >Home</a></li>
+                <li><a href="content/portfolio_gen.html">Portfolio Generator</a></li>
+                <li><a href="content/web_gen.html">Web Portfolio</a></li>
+                <li><a href="content/about.html">About</a></li>
+                <li><a href="content/contracts.html">Contracts</a></li>
+                <li><a href="content/careers.html" class="active">Careers</a></li>
+                <li><a href="content/contact.html">Contact</a></li>
             </ul>
-          
-  </header>
+            <div class="nav-actions">
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="portfolio_gen.html" class="btn primary">Get Started</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
 
   <div class="main-container">
     <h1 class="page-title">Dance Contracts Helper</h1>
@@ -228,5 +241,46 @@
       doc.save(`${type}-contract-template.pdf`);
     }
   </script>
+
+  <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span>Katika</span><span class="highlight">NaMe</span>
+                </div>
+                <p>Empowering African dancers to showcase their talent worldwide.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Product</h4>
+                    <a href="content/portfolio_gen.html">Portfolio Generator</a>
+                    <a href="content/web_gen.html">Web Portfolio</a>
+                    <a href="content/contracts.html">Contract Tools</a>
+                </div>
+                <div class="link-group">
+                    <h4>Company</h4>
+                    <a href="content/about.html">About</a>
+                    <a href="#">Blog</a>
+                    <a href="content/careers.html">Careers</a>
+                </div>
+                <div class="link-group">
+                    <h4>Support</h4>
+                    <a href="#">Help Center</a>
+                    <a href="content/contact.html">Contact</a>
+                    <a href="#">Privacy</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 KatikaNaMe. All rights reserved.</p>
+        </div>
+    </footer>
+  
 </body>
 </html>
