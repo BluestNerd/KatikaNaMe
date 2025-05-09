@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dance Contracts Helper | KatikaNaMe</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style2.css" />
+  <link rel="stylesheet" href="style2.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-  <header class="navbar">
+  <header class="header">
     <div class="nav-container">
       <h1 class="logo">KatikaNaMe</h1>
-      <nav class="menu">
+      <nav class="nav-links">
         <a href="index.html">Home</a>
-        <a href="portfolio_gen.html">Dance Portfolio Generator</a>
+        <a href="portfolio_gen.html">Portfolio Generator</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="contracts.html" class="active">Contracts</a>
@@ -22,57 +22,85 @@
     </div>
   </header>
 
-  <section class="hero">
-    <h2>Dance Contracts Helper</h2>
-    <p>Get informed, stay protected, and build your dance brand with confidence.</p>
-  </section>
+  <div class="main-container">
+    <h1 class="page-title">Dance Contracts Helper</h1>
+    <p class="subtitle" style="text-align: center; margin-bottom: 2rem;">Get informed, stay protected, and build your dance brand with confidence.</p>
 
-  <main class="content">
-    <section class="tool">
-      <h3>Select Your Engagement Type</h3>
-      <select id="engagementType">
-        <option value="performance">Live Performance</option>
-        <option value="teaching">Teaching/Workshops</option>
-        <option value="promotion">Influencer/Promotion</option>
-        <option value="brand">Brand Representation</option>
-        <option value="event">Event Hosting/Participation</option>
-        <option value="choreo">Choreography/Creative Collaboration</option>
-      </select>
-      <button onclick="getSuggestion()">Get Contract Suggestion</button>
-      <div id="contractSuggestions"></div>
+    <section class="contract-section">
+      <h2 class="section-title">Contract Generator</h2>
+      <div class="tool-card">
+        <div class="form-group">
+          <label for="engagementType">Select Your Engagement Type</label>
+          <select id="engagementType" class="styled-select">
+            <option value="performance">Live Performance</option>
+            <option value="teaching">Teaching/Workshops</option>
+            <option value="promotion">Influencer/Promotion</option>
+            <option value="brand">Brand Representation</option>
+            <option value="event">Event Hosting/Participation</option>
+            <option value="choreo">Choreography/Creative Collaboration</option>
+          </select>
+        </div>
+        <button onclick="getSuggestion()" class="btn btn-primary">Get Contract Suggestion</button>
+        <div id="contractSuggestions" class="suggestions-container"></div>
+      </div>
     </section>
 
-    <section class="basics">
-      <h3>Understanding Contracts 101</h3>
-      <!-- Basic education content inserted here -->
+    <section class="contract-section">
+      <h2 class="section-title">Understanding Contracts</h2>
+      <div class="info-card">
+        <h3>📜 Contract Essentials</h3>
+        <p>Every dance contract should clearly outline:</p>
+        <ul class="styled-list">
+          <li>Parties involved and their roles</li>
+          <li>Scope of work and deliverables</li>
+          <li>Compensation details and payment schedule</li>
+          <li>Intellectual property rights</li>
+          <li>Cancellation and termination clauses</li>
+          <li>Liability and insurance provisions</li>
+        </ul>
+      </div>
     </section>
 
-    <section class="contract-breakdown">
-      <h3>📜 Contract Breakdown: Understanding the Format</h3>
-      <!-- Breakdown sections like Compensation, IP, Liability -->
+    <section class="contract-section">
+      <h2 class="section-title">Contract Templates</h2>
+      <div class="tool-card">
+        <div class="form-group">
+          <label for="downloadContractType">Select Template Type</label>
+          <select id="downloadContractType" class="styled-select">
+            <option value="performance">Live Performance</option>
+            <option value="teaching">Teaching / Workshop</option>
+            <option value="promotion">Influencer / Promotion</option>
+            <option value="choreo">Choreography Collaboration</option>
+          </select>
+        </div>
+        <button onclick="generateContractPDF()" class="btn btn-primary">
+          <i class="fas fa-download"></i> Download Contract Template
+        </button>
+      </div>
     </section>
 
-    <section class="downloads">
-      <h3>Download Sample Contracts</h3>
-      <select id="downloadContractType">
-        <option value="performance">Live Performance</option>
-        <option value="teaching">Teaching / Workshop</option>
-        <option value="promotion">Influencer / Promotion</option>
-        <option value="choreo">Choreography Collaboration</option>
-      </select>
-      <button onclick="generateContractPDF()">📄 Download Contract Template</button>
+    <section class="contract-section">
+      <h2 class="section-title">Resources</h2>
+      <div class="resources-grid">
+        <a href="https://www.hevafund.com/" target="_blank" class="resource-card">
+          <h3>HEVA Fund</h3>
+          <p>Creative economy financial services for African artists</p>
+        </a>
+        <a href="https://www.artslaw.com.au/" target="_blank" class="resource-card">
+          <h3>Arts Law Centre</h3>
+          <p>Legal resources for artists in Australia</p>
+        </a>
+        <a href="https://www.danceusa.org/" target="_blank" class="resource-card">
+          <h3>Dance/USA</h3>
+          <p>Resources for dance professionals</p>
+        </a>
+        <a href="https://cadawest.org/contracts.html" target="_blank" class="resource-card">
+          <h3>CADA/West</h3>
+          <p>Contract resources for dance artists</p>
+        </a>
+      </div>
     </section>
-
-    <section class="resources">
-      <h3>Further Reading</h3>
-      <ul>
-        <li><a href="https://www.hevafund.com/" target="_blank">HEVA Fund</a></li>
-        <li><a href="https://www.artslaw.com.au/" target="_blank">Arts Law Centre of Australia</a></li>
-        <li><a href="https://www.danceusa.org/" target="_blank">Dance/USA</a></li>
-        <li><a href="https://cadawest.org/contracts.html" target="_blank">CADA/West Contracts Resource</a></li>
-      </ul>
-    </section>
-  </main>
+  </div>
 
   <footer class="footer">
     <p>&copy; 2025 KatikaNaMe. All rights reserved.</p>
@@ -120,6 +148,26 @@
           "Set payment per choreography or per session."
         ],
         warning: "Without a contract, co-creatorship rights can be contested later."
+      },
+      brand: {
+        title: "Brand Representation Contract Tips",
+        tips: [
+          "Define the duration and scope of representation.",
+          "Specify exclusivity terms if applicable.",
+          "Include usage rights for your image/likeness.",
+          "Detail compensation structure (flat fee, royalties, etc.)."
+        ],
+        warning: "Watch for overly broad image rights that could limit future work."
+      },
+      event: {
+        title: "Event Hosting/Participation Contract Tips",
+        tips: [
+          "Clearly define your role and responsibilities.",
+          "Include technical requirements and rider.",
+          "Specify promotional obligations.",
+          "Detail cancellation policies and force majeure clauses."
+        ],
+        warning: "Ensure you're not liable for event failures beyond your control."
       }
     };
 
@@ -129,7 +177,7 @@
       const data = suggestions[type];
 
       if (!data) {
-        container.innerHTML = "<p>No suggestions available for this type.</p>";
+        container.innerHTML = "<div class='suggestion-box'><p>No suggestions available for this type.</p></div>";
         return;
       }
 
@@ -137,8 +185,11 @@
       container.innerHTML = `
         <div class="suggestion-box">
           <h4>${data.title}</h4>
-          <ul>${tipsHtml}</ul>
-          <p><strong>⚠️ Warning:</strong> ${data.warning}</p>
+          <ul class="styled-list">${tipsHtml}</ul>
+          <div class="warning-box">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>${data.warning}</p>
+          </div>
         </div>
       `;
     }
