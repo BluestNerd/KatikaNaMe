@@ -1,4 +1,4 @@
-n<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -15,11 +15,16 @@ n<!DOCTYPE html>
                 <span>Katika</span><span class="highlight">NaMe</span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="content/portfolio_gen.html">Portfolio Generator</a></li>
-                <li><a href="content/web_gen.html">Web Portfolio</a></li>
-                <li><a href="content/about.html">About</a></li>
-                <li><a href="content/contracts.html">Contracts</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Services <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="content/portfolio_gen.html">Portfolio Generator</a></li>
+                        <li><a href="content/web_gen.html">Web Portfolio</a></li>
+                        <li><a href="content/contracts.html">Contract Tools</a></li>
+                    </ul>
+                </li>
+                <li><a href="content/about.html" class="active">About</a></li>
                 <li><a href="content/careers.html">Careers</a></li>
                 <li><a href="content/contact.html">Contact</a></li>
             </ul>
@@ -27,7 +32,7 @@ n<!DOCTYPE html>
                 <button id="theme-toggle" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
                 </button>
-                <a href="portfolio_gen.html" class="btn primary">Get Started</a>
+                <a href="content/portfolio_gen.html" class="btn primary">Get Started</a>
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -38,25 +43,66 @@ n<!DOCTYPE html>
     </header>
 
     <section class="about-hero">
-        <h1 class="title-line">Our <span class="highlight">Mission</span></h1>
-        <p class="subtitle">Empowering Kenyan dancers to take control of their careers through technology</p>
+        <h1 class="title-line">Our <span class="highlight">Story</span></h1>
+        <p class="subtitle">Empowering African dancers through innovative digital solutions</p>
     </section>
 
     <section class="mission-section">
         <div class="section-header">
-            <span class="section-label">About Us</span>
-            <h2>Revolutionizing <span class="highlight">Dance</span> Digital Space</h2>
+            <span class="section-label">Who We Are</span>
+            <h2>Bridging <span class="highlight">Art</span> and Technology</h2>
         </div>
         
         <div class="mission-content">
             <div class="mission-text">
-                <p>KatikaNaMe was born from a passion for a Kenyan dance enthusiast and a recognition of the challenges dancers face in showcasing their talent professionally. We saw the need for a platform that understands the unique styles, and stories of dance.</p>
-                <p>With the experience of dance, and technology in the Kenyan space, we have created a solution that offers a cutting-edge digital presentation.</p>
-                <p>Whether you're a traditional dancer preserving cultural heritage or a contemporary artist pushing boundaries, KatikaNaMe gives you the tools to present your work with the professionalism it deserves.</p>
-                <a href="contact.html" class="btn primary">Join Our Community</a>
+                <h3>Our Vision</h3>
+                <p>KatikaNaMe is revolutionizing how African dancers showcase their talent and manage their careers. Born from a dancer's frustration with limited professional opportunities, we've created a comprehensive platform that addresses the unique needs of performers across the continent.</p>
+                
+                <h3>What We Offer</h3>
+                <div class="services-highlight">
+                    <div class="service-item">
+                        <i class="fas fa-images"></i>
+                        <h4>Portfolio Generator</h4>
+                        <p>Create stunning digital portfolios in minutes, no design skills needed</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-globe"></i>
+                        <h4>Web Portfolios</h4>
+                        <p>Professional websites to showcase your work to global audiences</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-file-contract"></i>
+                        <h4>Contract Tools</h4>
+                        <p>Legally-vetted templates to protect your work and income</p>
+                    </div>
+                </div>
+                
+                <p>Our goal is to help hundreds of dancers present their work professionally, secure better gigs, and take control of their artistic careers. Our platform combines deep understanding of African dance culture with cutting-edge technology.</p>
+                <a href="content/contact.html" class="btn primary">Join Our Movement</a>
             </div>
             <div class="mission-image">
-                <img src="katika.webp">
+                <img src="katika.webp" alt="KatikaNaMe team">
+            </div>
+        </div>
+    </section>
+
+    <section class="impact-section">
+        <div class="section-header">
+            <span class="section-label">Our Impact</span>
+            <h2>Transforming <span class="highlight">Careers</span></h2>
+        </div>
+        <div class="impact-stats">
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Dancers Empowered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5%</div>
+                <div class="stat-label">Increased Booking Rates</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">African-Made Solution</div>
             </div>
         </div>
     </section>
@@ -64,30 +110,42 @@ n<!DOCTYPE html>
     <section class="team-section">
         <div class="section-header">
             <span class="section-label">Our Team</span>
-            <h2>Meet The <span class="highlight">Creator</span></h2>
+            <h2>The Force <span class="highlight">Behind</span></h2>
         </div>
         
         <div class="team-grid">
             <div class="team-member">
                 <div class="member-image">
-                    <img src="pauk.jpeg" alt="Team member">
+                    <img src="pauk.jpeg" alt="Pauline Karega">
                 </div>
                 <h3 class="member-name">Pauline Karega</h3>
-                <p class="member-role">Founder & Tech lead</p>
-                <p class="member-bio">Free style dancer from Nairobi. Pauline is a PhD student working on health and environmental data science. She believes in open data, uses it for research, but also strongly believes it's how to revolutionize performance art in Kenya. So, this is step one.</p>
+                <p class="member-role">Founder & Tech Lead</p>
+                <p class="member-bio">A Nairobi-based freestyle dancer and PhD candidate in data science, Pauline bridges the worlds of art and technology. Her vision for KatikaNaMe comes from witnessing talented dancers struggle with visibility and fair compensation. Combining her technical expertise with artistic passion, she's creating tools that empower performers across Africa.</p>
+                <div class="member-social">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
-            
         </div>
     </section>
 
-    <!-- Footer -->
+    <section class="cta-section">
+        <h2>Ready to Elevate Your Dance Career?</h2>
+        <p>Join hundreds of dancers who've transformed their professional presence</p>
+        <div class="cta-buttons">
+            <a href="content/portfolio_gen.html" class="btn primary">Create Your Portfolio</a>
+            <a href="content/contact.html" class="btn secondary">Contact Us</a>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
                 <div class="logo">
                     <span>Katika</span><span class="highlight">NaMe</span>
                 </div>
-                <p>Empowering Kenyan dancers to showcase their talent worldwide.</p>
+                <p>Empowering African dancers through innovative digital solutions</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -96,21 +154,21 @@ n<!DOCTYPE html>
             </div>
             <div class="footer-links">
                 <div class="link-group">
-                    <h4>Product</h4>
-                    <a href="portfolio_gen.html">Portfolio Generator</a>
-                    <a href="web_gen.html">Web Portfolio</a>
-                    <a href="">Templates</a>
+                    <h4>Services</h4>
+                    <a href="content/portfolio_gen.html">Portfolio Generator</a>
+                    <a href="content/web_gen.html">Web Portfolio</a>
+                    <a href="content/contracts.html">Contract Tools</a>
                 </div>
                 <div class="link-group">
                     <h4>Company</h4>
-                    <a href="about.html">About</a>
+                    <a href="content/about.html">About</a>
                     <a href="#">Blog</a>
-                    <a href="careers.html">Careers</a>
+                    <a href="content/careers.html">Careers</a>
                 </div>
                 <div class="link-group">
                     <h4>Support</h4>
                     <a href="#">Help Center</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="content/contact.html">Contact</a>
                     <a href="#">Privacy</a>
                 </div>
             </div>
@@ -119,5 +177,26 @@ n<!DOCTYPE html>
             <p>&copy; 2025 KatikaNaMe. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Dropdown menu functionality
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            });
+        });
+
+        // Close dropdown when clicking elsewhere
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
